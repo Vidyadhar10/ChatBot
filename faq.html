@@ -27,7 +27,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
+  <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -156,131 +156,79 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+  <style>
+    ::placeholder { 
+  color: red;
+  opacity: 1; 
+}
+  </style>
 
-  <main>
+  <main id="main"  class="main">
 
-    <div class="Container" id="faqform">
-      <form class="card " id="form" action="/" class="needs-validation" novalidate>
-        <h4 class="text-center">Knowledege Base Form</h4>
-        <div class="input-control mt-2">
-          <label for="department">Department -</label>
-          <input id="department" name="department" type="text" placeholder="" required>
-          <div class="invalid-feedback" id="error">Please, enter the Department Name..!</div>
-        </div>
-        <div class="input-control mt-2">
-          <label for="section">Section -</label>
-          <input id="section" name="section" type="text" placeholder="" required>
-          <div class="invalid-feedback" id="error">Section is empty...!</div>
-        </div>
-        <div class="input-control mt-2">
-          <label for="tag">Tag -</label>
-          <input id="tag" name="tag" type="text" placeholder="" required>
-          <div class="invalid-feedback" id="error">Please, enter your Department Name..!</div>
-        </div>
-        <div class="input-control mt-3">
-          <label for="problem">Problem -</label>
-          <input id="problem" name="problem" type="text" placeholder="" required>
-          <div class="invalid-feedback" id="error">Enter the Problem...!</div>
-        </div>
-        <div class="input-control mt-3">
-          <label for="solution">Solution -</label>
-          <textarea name="myeditor" id="Solution-box" class="form-control" placeholder="" required></textarea>
-          <div class="invalid-feedback" id="error">Please, enter the Solution..!</div>
-        </div>
+    <div class="">
+      <h4 style="color: #012970;">Knowledge Base Form</h4>
+        <form class=" mt-3">
+         <div class="">
+         <div class="row">
+            <div class="col"> <label for="Department">Department</label></div>
+            <div class="col">  <label class="" for="section">Section</label></div>
+           
+         </div>
+         <div class="row mt-1">
+            <div class="col"> <input type="text" class="form-control pt-1 pb-1" placeholder="Department"></div>
+            <div class="col">  <input type="text" class="form-control pt-1 pb-1" placeholder="Section"></div>
+           
+         </div>
 
-        <div class="input-control mt-3">
-          <label for="inputAttachements" class="col-sm-3 col-form-label">Attachments-</label>
-          <input type="file" name="Attachments[]" multiple id="FileAttachment" style="display:none;"
-            onchange="loadAttachFile(event)">
+         <div class="row mt-3">
+            <div class="col-8"> <label for="tagt">Problem</label></div>
+            <div class="col-4">  <label class="" for="section">Tag</label></div>
+           
+         </div>
+         <div class="row mt-1">
+            <div class="col-8"> <input type="text" class="form-control pt-1 pb-1" placeholder="Problem"></div>
+            <div class="col-4">  <input type="text" class="form-control pt-1 pb-1" placeholder="Tag"></div>
+           
+         </div>
 
-          <div class="col-sm-9 d-flex">
-            <div class=" badge mt-2 p-2"
-              style="background-color: whitesmoke; cursor:pointer; font-size:.9rem; border:3px solid lightgrey"
-              onclick="Attachment1()">
-              <i class="bi bi-paperclip text-secondary"></i>
-              <label for="" class="text-secondary" style=" cursor:pointer; ">Attach File</label>
-            </div>
-          </div>
-        </div>
+         <div class="row mt-3">
+           
+            <div class="col">  <label class="" for="Solution">Solution</label></div>
+            
+           
+         </div>
+         <div class="row mt-1">
+            <div class="col"><textarea name="myeditor" id="Solution-box" class="form-control" cols="25" placeholder="" required ></textarea></div>
+  
+         </div>
+         <div class="row mt-3">
+           
+            <div class="col">  <label class="" for="link">Link</label></div>
+           
+         </div>
+         <div class="row">
+            <div class="col-6"> <input type="url" class="form-control pt-1 pb-1"></div>
+  
+         </div>
 
-        <div class="row mb-3 start-right">
-          <div class="block col-sm-3"></div>
-          <div class="container col-sm-9 ml-5 mt-2">
-            <div id="OutputAttachment" class="fw-bold"></div>
-          </div>
-          <script>
-            function Attachment1() {
-              document.getElementById("FileAttachment").click();
-            }
-            var loadAttachFile = function (event) {
-
-              var Anchor = document.getElementById('OutputAttachment');
-              for (var i = 0; i < event.target.files.length; i++) {
-
-
-                var link = document.createElement("a");
-                link.href = URL.createObjectURL(event.target.files[i]);
-                link.target = "blank";
-                link.innerHTML = event.target.files[i].name;
-
-                // link.parentNode.insertBefore(br, link.nextSibling);
-                Anchor.appendChild(link);
-                var br = document.createElement("br");
-                Anchor.appendChild(br);
-
-              }
-
-            };
-          </script>
-        </div>
-
-        <div class="input-control">
-          <label for="link">Link -</label>
-          <input id="link" name="link" type="text" placeholder="" required>
-          <div class="invalid-feedback" id="error">Please, provide the Link...!</div>
-        </div>
-        <div class="text-end">
-          <button type="submit" class="btn btn-primary" onclick="ChangeEditable()">Publish</button>
-          <button type="button" class="btn btn-danger" onclick="FormReset()" data-bs-dismiss="modal">Cancel</button>
-        </div>
-        <script>
-          function FormReset() {
-            document.getElementById("form").reset();
-            form.classList.remove('was-validated')
-
-          }
-        </script>
-
-        <script>
-          function ChangeEditable() {
-            document.getElementById("department").disabled = false;
-          }
-
-          const form = document.querySelector('#form');
-
-          form.addEventListener('submit', (event) => {
-            if (!form.checkValidity()) {
-              event.preventDefault(); // Prevent the form from submitting
-              // Display an error message or take other actions
-              form.classList.add('was-validated')
-
-            } else {
-              // The form is valid, submit it
-              Swalcall();
-              form.classList.remove('was-validated')
-
-            }
-          });
-        </script>
-      </form>
-    </div>
-
+         <div class="text-end mt-3">
+           
+            <button class="btn btn-danger btn-sm">Cancel</button>
+            <button class="btn btn-primary btn-sm ml-2">Publish</button>
+           
+         </div>
+      </div>
+         
+        </form>
+     </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
       window.onload = function () {
         CKEDITOR.replace('myeditor', {
-
+  
           height: 100,
-          width: 400,
+       
           toolbarGroups: [
             { name: 'group1', groups: ['clipboard', 'editing', 'links', 'insert', 'styles', 'tools', 'document', 'others'] }
           ],
@@ -288,6 +236,10 @@
         });
       };
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
 
 
   </main>
