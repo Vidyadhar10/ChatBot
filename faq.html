@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FAQ</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Form CDN -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+  </link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
+
+  <!-- cdn for text area -->
+  <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+           <div class="d-flex">
+            <i class="bi bi-person-fill"></i>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+           </div>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
+            <li class="dropdown-header">
+              <h6><b>Yash Zad</b></h6>
+              <span>Web Designer</span>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- <li class="dropdown-item-text">
+              <p> Username : Yash123</p>
+              <p > Agent_id : TT104 </p>
+              <p > Mobile No : 9857461230 </p>
+              <p > Status : 1 </p>
+            </li> -->
+
+            <li class="d-flex">
+              <div class="m-2 p-1" >
+                <p>Username :</p>
+                <p>Agent Id :</p>
+                <p>Mobile No :</p>
+                <p>Status :</p>
+              </div>
+              <div class="m-2 p-1">
+                <p>Yash123</p>
+                <p>TT104</p>
+                <p>9874562130</p>
+                <p>Active</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i><span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-book"></i><span>FAQ</span><i class=" ms-auto"></i>
+        </a>
+
+      </li><!-- End FAQ Nav -->
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gear"></i><span>Setting</span><i class="ms-auto"></i>
+        </a>
+
+      </li><!-- End Setting Nav -->
+
+
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main>
+
+    <div class="Container" id="faqform">
+      <form class="card " id="form" action="/" class="needs-validation" novalidate>
+        <h4 class="text-center">Knowledege Base Form</h4>
+        <div class="input-control mt-2">
+          <label for="department">Department -</label>
+          <input id="department" name="department" type="text" placeholder="" required>
+          <div class="invalid-feedback" id="error">Please, enter the Department Name..!</div>
+        </div>
+        <div class="input-control mt-2">
+          <label for="section">Section -</label>
+          <input id="section" name="section" type="text" placeholder="" required>
+          <div class="invalid-feedback" id="error">Section is empty...!</div>
+        </div>
+        <div class="input-control mt-2">
+          <label for="tag">Tag -</label>
+          <input id="tag" name="tag" type="text" placeholder="" required>
+          <div class="invalid-feedback" id="error">Please, enter your Department Name..!</div>
+        </div>
+        <div class="input-control mt-3">
+          <label for="problem">Problem -</label>
+          <input id="problem" name="problem" type="text" placeholder="" required>
+          <div class="invalid-feedback" id="error">Enter the Problem...!</div>
+        </div>
+        <div class="input-control mt-3">
+          <label for="solution">Solution -</label>
+          <textarea name="myeditor" id="Solution-box" class="form-control" placeholder="" required></textarea>
+          <div class="invalid-feedback" id="error">Please, enter the Solution..!</div>
+        </div>
+
+        <div class="input-control mt-3">
+          <label for="inputAttachements" class="col-sm-3 col-form-label">Attachments-</label>
+          <input type="file" name="Attachments[]" multiple id="FileAttachment" style="display:none;"
+            onchange="loadAttachFile(event)">
+
+          <div class="col-sm-9 d-flex">
+            <div class=" badge mt-2 p-2"
+              style="background-color: whitesmoke; cursor:pointer; font-size:.9rem; border:3px solid lightgrey"
+              onclick="Attachment1()">
+              <i class="bi bi-paperclip text-secondary"></i>
+              <label for="" class="text-secondary" style=" cursor:pointer; ">Attach File</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 start-right">
+          <div class="block col-sm-3"></div>
+          <div class="container col-sm-9 ml-5 mt-2">
+            <div id="OutputAttachment" class="fw-bold"></div>
+          </div>
+          <script>
+            function Attachment1() {
+              document.getElementById("FileAttachment").click();
+            }
+            var loadAttachFile = function (event) {
+
+              var Anchor = document.getElementById('OutputAttachment');
+              for (var i = 0; i < event.target.files.length; i++) {
+
+
+                var link = document.createElement("a");
+                link.href = URL.createObjectURL(event.target.files[i]);
+                link.target = "blank";
+                link.innerHTML = event.target.files[i].name;
+
+                // link.parentNode.insertBefore(br, link.nextSibling);
+                Anchor.appendChild(link);
+                var br = document.createElement("br");
+                Anchor.appendChild(br);
+
+              }
+
+            };
+          </script>
+        </div>
+
+        <div class="input-control">
+          <label for="link">Link -</label>
+          <input id="link" name="link" type="text" placeholder="" required>
+          <div class="invalid-feedback" id="error">Please, provide the Link...!</div>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-primary" onclick="ChangeEditable()">Publish</button>
+          <button type="button" class="btn btn-danger" onclick="FormReset()" data-bs-dismiss="modal">Cancel</button>
+        </div>
+        <script>
+          function FormReset() {
+            document.getElementById("form").reset();
+            form.classList.remove('was-validated')
+
+          }
+        </script>
+
+        <script>
+          function ChangeEditable() {
+            document.getElementById("department").disabled = false;
+          }
+
+          const form = document.querySelector('#form');
+
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault(); // Prevent the form from submitting
+              // Display an error message or take other actions
+              form.classList.add('was-validated')
+
+            } else {
+              // The form is valid, submit it
+              Swalcall();
+              form.classList.remove('was-validated')
+
+            }
+          });
+        </script>
+      </form>
+    </div>
+
+    <script>
+      window.onload = function () {
+        CKEDITOR.replace('myeditor', {
+
+          height: 100,
+          width: 400,
+          toolbarGroups: [
+            { name: 'group1', groups: ['clipboard', 'editing', 'links', 'insert', 'styles', 'tools', 'document', 'others'] }
+          ],
+          removeButtons: 'Subscript,Superscript'
+        });
+      };
+    </script>
+
+
+  </main>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+      
+              <li class="nav-item dropdown pe-3">
+      
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                 <div class="d-flex">
+                  <i class="bi bi-person-fill"></i>
+                  <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+                 </div>
+                </a><!-- End Profile Iamge Icon -->
+      
+                <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
+                  <li class="dropdown-header">
+                    <h6><b>Yash Zad</b></h6>
+                    <span>Web Designer</span>
+                  </li>
+      
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+      
+                  <!-- <li class="dropdown-item-text">
+                    <p> Username : Yash123</p>
+                    <p > Agent_id : TT104 </p>
+                    <p > Mobile No : 9857461230 </p>
+                    <p > Status : 1 </p>
+                  </li> -->
+      
+                  <li class="d-flex">
+                    <div class="m-2 p-1" >
+                      <p>Username :</p>
+                      <p>Agent Id :</p>
+                      <p>Mobile No :</p>
+                      <p>Status :</p>
+                    </div>
+                    <div class="m-2 p-1">
+                      <p>Yash123</p>
+                      <p>TT104</p>
+                      <p>9874562130</p>
+                      <p>Active</p>
+                    </div>
+                  </li>
+      
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+      
+                  <li>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
+                    </a>
+                  </li>
+      
+                </ul><!-- End Profile Dropdown Items -->
+              </li><!-- End Profile Nav -->
+      
+            </ul>
+          </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed " href="index.html">
+                    <i class="bi bi-grid"></i><span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="faq.html">
+                    <i class="bi bi-book"></i><span>FAQ</span><i class=" ms-auto"></i>
+                </a>
+
+            </li><!-- End FAQ Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-gear"></i><span>Setting</span><i class="ms-auto"></i>
+                </a>
+
+            </li><!-- End Setting Nav -->
+
+
+
+
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+
+        <section class="message-area">
+            <div>
+                <div class="row ">
+                    <div class="col-9 m-0">
+                        <div class="chat-area">
+                            <!-- chatlist -->
+                            <div class="chatlist">
+                                <div class="modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="chat-header">
+                                            <div class="msg-search m-2 ">
+                                                <input type="text" class="form-control" id="inlineFormInputGroup"
+                                                    placeholder="Search" aria-label="search">
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <!-- chat-list -->
+                                            <div class="chat-lists">
+                                                <div class="tab-content" id="myTabContent">
+
+                                                    <!-- chat-list -->
+                                                    <div class="chat-list m-2 ">
+                                                        <a href="#" class="d-flex  align-items-center hov">
+                                                            <div class="flex-shrink-0">
+                                                                <img class="img-fluid"
+                                                                    src="https://mehedihtml.com/chatbox/assets/img/user.png"
+                                                                    alt="user img">
+                                                                <!-- <span class="active"></span> -->
+                                                            </div>
+                                                            <div class="flex-grow-1 m-1">
+                                                                <h3>Mehedi Hasan</h3>
+
+                                                            </div>
+                                                        </a>
+
+
+
+
+                                                    </div>
+                                                    <!-- chat-list -->
+
+
+                                                </div>
+
+                                            </div>
+                                            <!-- chat-list -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- chatlist -->
+
+
+
+                            <!-- chatbox -->
+                            <div class="chatbox ">
+                                <div class="modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="msg-head">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="chat-icon"><img class="img-fluid"
+                                                                src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
+                                                                alt="image title"></span>
+                                                        <div class="flex-shrink-0">
+                                                            <img class="img-fluid"
+                                                                src="https://mehedihtml.com/chatbox/assets/img/user.png"
+                                                                alt="user img">
+                                                        </div>
+                                                        <div class="flex-grow-1 ms-3">
+                                                            <h3>Mehedi Hasan</h3>
+                                                            <p>front end developer</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <ul class="moreoption">
+                                                        <li class="navbar nav-item dropdown">
+                                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a>
+                                                                </li>
+                                                                <li>
+                                                                    <hr class="dropdown-divider">
+                                                                </li>
+                                                                <li><a class="dropdown-item" href="#">Something else
+                                                                        here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal-body">
+                                            <div class="msg-body">
+                                                <ul>
+                                                    <li class="sender" id="sender">
+                                                        <p> Hey, Are you there? </p>
+                                                        <span class="time">10:06 am</span>
+                                                    </li>
+
+                                                    <li class="repaly" id="reciver">
+                                                        <p>yes!</p>
+                                                        <span class="time">10:20 am</span>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="send-box">
+                                            <form action="">
+                                                <input type="text" class="form-control" aria-label="message…"
+                                                    placeholder="Write message…">
+
+                                                <button type="button"><i class="fa fa-paper-plane"
+                                                        aria-hidden="true"></i> Send</button>
+                                            </form>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- chatbox -->
+
+
+                    </div>
+                    <div class="col">
+                        <div class="card ">
+
+                            <div class="row" style="font-size: 14px;">
+                                <div class="col-7 p-2 m-1">
+                                    <ul style="list-style: none;">
+                                        <li>Ticket Number</li>
+                                        <li>Ticket Status</li>
+                                        <li>Ticket created date</li>
+                                        <li>Last Seen</li>
+                                        <li>Priority</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-4 p-2 m-1">
+                                    <ul style="list-style: none;">
+                                        <li>123456</li>
+                                        <li>open</li>
+                                        <li>23/03/2023</li>
+                                        <li>Today</li>
+                                        <li>High</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card " style="border: none;">
+
+
+                            <div class="input-group">
+                                <input class="form-control border-end-0 border rounded-pill m-2" type="search"
+                                    placeholder="search for answer" id="example-search-input">
+                                <span class="input-group-append ">
+                                    <button
+                                        class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill m-2 "
+                                        type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+
+
+                        </div>
+                        <div class="card">
+
+                            <div class="row">
+                                <lable class="col align-self-center m-2">Transfer ticket</lable>
+                                <select class="col form-control m-2" id="">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
