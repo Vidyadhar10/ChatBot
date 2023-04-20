@@ -136,17 +136,6 @@
 
             </li><!-- End FAQ Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gear"></i><span>Setting</span><i class="ms-auto"></i>
-                </a>
-
-            </li><!-- End Setting Nav -->
-
-
-
-
-
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -155,7 +144,7 @@
 
         <section class="message-area">
             <div>
-                <div class="row ">
+                <div class="row">
                     <div class="col-9 m-0">
                         <div class="chat-area">
                             <!-- chatlist -->
@@ -297,25 +286,21 @@
                         <div class="card ">
 
                             <div class="row" style="font-size: 14px;">
-                                <div class="col-7 p-2 m-1">
-                                    <ul style="list-style: none;">
-                                        <li>Ticket Number</li>
-                                        <li>Ticket Status</li>
-                                        <li>Ticket created date</li>
-                                        <li>Last Seen</li>
-                                        <li>Priority</li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-4 p-2 m-1">
-                                    <ul style="list-style: none;">
-                                        <li>123456</li>
-                                        <li>open</li>
-                                        <li>23/03/2023</li>
-                                        <li>Today</li>
-                                        <li>High</li>
-
-                                    </ul>
+                                <div class="d-flex m-3">
+                                    <div class="m-2">
+                                      <p>Ticket Number :</p>
+                                      <p>Ticket Status :</p>
+                                      <p>Ticket Created Date :</p>
+                                      <p>Last Seen :</p>
+                                      <p>Priority :</p>
+                                    </div>
+                                    <div class="m-2">
+                                      <p>123456</p>
+                                      <p>Open</p>
+                                      <p>23/03/2023</p>
+                                      <p>Today</p>
+                                      <p>High</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -339,13 +324,17 @@
                         </div>
                         <div class="card">
 
-                            <div class="row">
-                                <lable class="col align-self-center m-2">Transfer ticket</lable>
-                                <select class="col form-control m-2" id="">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
+                             <div>
+                                <lable class="col-7 p-2 ">Transfer ticket</lable>
+                                <select class="col-5 m-2 " name="Ticket" id="Ticket_dropdown">
+                                    <option value="select"></option>
+                                    <option value="select">option...</option>
+                                  </select>
+                            </div> 
+
+
+
+
 
                         </div>
                     </div>
