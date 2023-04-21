@@ -27,9 +27,11 @@
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/dashboardStyle.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -57,63 +59,63 @@
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-      
-              <li class="nav-item dropdown pe-3">
-      
-                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                 <div class="d-flex">
-                  <i class="bi bi-person-fill"></i>
-                  <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
-                 </div>
-                </a><!-- End Profile Iamge Icon -->
-      
-                <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
-                  <li class="dropdown-header">
-                    <h6><b>Yash Zad</b></h6>
-                    <span>Web Designer</span>
-                  </li>
-      
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-      
-                  <!-- <li class="dropdown-item-text">
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <div class="d-flex">
+                            <i class="bi bi-person-fill"></i>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+                        </div>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
+                        <li class="dropdown-header">
+                            <h6><b>Yash Zad</b></h6>
+                            <span>Web Designer</span>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <!-- <li class="dropdown-item-text">
                     <p> Username : Yash123</p>
                     <p > Agent_id : TT104 </p>
                     <p > Mobile No : 9857461230 </p>
                     <p > Status : 1 </p>
                   </li> -->
-      
-                  <li class="d-flex">
-                    <div class="m-2 p-1" >
-                      <p>Username :</p>
-                      <p>Agent Id :</p>
-                      <p>Mobile No :</p>
-                      <p>Status :</p>
-                    </div>
-                    <div class="m-2 p-1">
-                      <p>Yash123</p>
-                      <p>TT104</p>
-                      <p>9874562130</p>
-                      <p>Active</p>
-                    </div>
-                  </li>
-      
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-      
-                  <li>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                      <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
-                    </a>
-                  </li>
-      
-                </ul><!-- End Profile Dropdown Items -->
-              </li><!-- End Profile Nav -->
-      
+
+                        <li class="d-flex">
+                            <div class="m-2 p-1">
+                                <p>Username :</p>
+                                <p>Agent Id :</p>
+                                <p>Mobile No :</p>
+                                <p>Status :</p>
+                            </div>
+                            <div class="m-2 p-1">
+                                <p>Yash123</p>
+                                <p>TT104</p>
+                                <p>9874562130</p>
+                                <p>Active</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
             </ul>
-          </nav><!-- End Icons Navigation -->
+        </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
 
@@ -123,7 +125,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed " href="index.html">
+                <a class="nav-link collapsed " href="dashboard.html">
                     <i class="bi bi-grid"></i><span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
@@ -136,6 +138,17 @@
 
             </li><!-- End FAQ Nav -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-gear"></i><span>Setting</span><i class="ms-auto"></i>
+                </a>
+
+            </li><!-- End Setting Nav -->
+
+
+
+
+
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -144,7 +157,7 @@
 
         <section class="message-area">
             <div>
-                <div class="row">
+                <div class="row ">
                     <div class="col-9 m-0">
                         <div class="chat-area">
                             <!-- chatlist -->
@@ -166,21 +179,7 @@
                                                 <div class="tab-content" id="myTabContent">
 
                                                     <!-- chat-list -->
-                                                    <div class="chat-list m-2 ">
-                                                        <a href="#" class="d-flex  align-items-center hov">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid"
-                                                                    src="https://mehedihtml.com/chatbox/assets/img/user.png"
-                                                                    alt="user img">
-                                                                <!-- <span class="active"></span> -->
-                                                            </div>
-                                                            <div class="flex-grow-1 m-1">
-                                                                <h3>Mehedi Hasan</h3>
-
-                                                            </div>
-                                                        </a>
-
-
+                                                    <div class="chat-list m-2 " id="chat_list">
 
 
                                                     </div>
@@ -286,21 +285,25 @@
                         <div class="card ">
 
                             <div class="row" style="font-size: 14px;">
-                                <div class="d-flex m-3">
-                                    <div class="m-2">
-                                      <p>Ticket Number :</p>
-                                      <p>Ticket Status :</p>
-                                      <p>Ticket Created Date :</p>
-                                      <p>Last Seen :</p>
-                                      <p>Priority :</p>
-                                    </div>
-                                    <div class="m-2">
-                                      <p>123456</p>
-                                      <p>Open</p>
-                                      <p>23/03/2023</p>
-                                      <p>Today</p>
-                                      <p>High</p>
-                                    </div>
+                                <div class="col-7 p-2 m-1">
+                                    <ul style="list-style: none;">
+                                        <li>Ticket Number</li>
+                                        <li>Ticket Status</li>
+                                        <li>Ticket created date</li>
+                                        <li>Last Seen</li>
+                                        <li>Priority</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-4 p-2 m-1">
+                                    <ul style="list-style: none;">
+                                        <li id="ticketNo">--</li>
+                                        <li id="ticketStatus">--</li>
+                                        <li id="createdDate">--</li>
+                                        <li id="createdTime">--</li>
+                                        <li id="priority">--</li>
+
+                                    </ul>
                                 </div>
                             </div>
 
@@ -324,19 +327,32 @@
                         </div>
                         <div class="card">
 
-                             <div>
-                                <lable class="col-7 p-2 ">Transfer ticket</lable>
-                                <select class="col-5 m-2 " name="Ticket" id="Ticket_dropdown">
-                                    <option value="select"></option>
-                                    <option value="select">option...</option>
-                                  </select>
-                            </div> 
-
-
-
-
-
+                            <div class="row">
+                                <lable class="col align-self-center m-2">Transfer ticket</lable>
+                                <select class="col form-control m-2" id="transfer_ticket_dropdown">
+                                    <option selected>Choose...</option>
+                                </select>
+                            </div>
                         </div>
+                        <script>
+                            $.ajax({
+                                url: "http://192.168.137.129:5000/chat_transfer/agent_list",
+                                type: "GET",
+                                dataType: "json",
+                                success: function (data) {
+                                    var $select = $('#transfer_ticket_dropdown');
+                                    for (let i of data) {
+                                        $select.append($('<option>', {
+                                            value: i.agent_name,
+                                            text: i.agent_name
+                                        }));
+                                    }
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus, errorThrown);
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -361,6 +377,8 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <!-- <script src="assets/js/chat_transfer.js"></script> -->
 
 </body>
 
