@@ -319,3 +319,156 @@
   }
 
 })();
+
+
+jQuery(document).ready(function() {
+
+  $(".chat-list a").click(function() {
+      $(".chatbox").addClass('showbox');
+      return false;
+  });
+
+  $(".chat-icon").click(function() {
+      $(".chatbox").removeClass('showbox');
+  });
+
+
+});
+
+function check_status(){
+if(document.getElementById('token_status').value=="Close"){
+  Swal.fire({
+    title: 'Do you want to close the token ?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Closed!',
+        'Your token has been closed.',
+        'success'
+      )
+    }
+  })
+}
+
+else if(document.getElementById('token_status').value=="Open"){
+  Swal.fire({
+    title: 'Do you want to open the token ?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Opened!',
+        'Your token has been Opened.',
+        'success'
+      )
+    }
+  })
+}
+
+else if(document.getElementById('token_status').value=="Hold"){
+  Swal.fire({
+    title: 'Do you want to hold the token ?',
+   
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Token on Hold!',
+        'Your token now on hold.',
+        'success'
+      )
+    }
+  })
+}
+
+
+
+}
+
+var state;
+function cardtype(state){
+
+  if(state=='Open'){
+      window.location.href='chat.html';
+      localStorage.setItem("type", "Open");
+  }
+
+else if(state=='Close'){
+  window.location.href='chat.html';
+      
+  localStorage.setItem("type", "Close");
+
+}
+
+else if(state=='live'){
+  window.location.href='chat.html';
+      
+  localStorage.setItem("type", "live");
+
+}
+
+else if(state='Hold'){
+  window.location.href='chat.html';
+      
+  localStorage.setItem("type", "Hold");
+}
+
+}
+
+function checkpagetype(){
+  let type=localStorage.getItem("type");
+  if(type=='Open'){
+    let select=document.getElementById('token_status');
+    select.innerHTML=`
+    <option value="" selected>Open</option>
+   
+    <option value="Close">Close</option>
+    <option value="Hold">Hold</option>`;
+  }
+
+  else if(type=='Close'){
+    let select=document.getElementById('token_status');
+    select.innerHTML=`
+    <option value="">Close</option>
+    `;
+
+    
+  }
+
+  else if(type=='live'){
+    let select=document.getElementById('token_status');
+    
+    select.innerHTML=`
+    <option value="" selected>Live</option>
+    <option value="Open">Open</option>
+    <option value="Close">Close</option>
+    <option value="Hold">Hold</option>
+    `;
+  }
+
+  else if(type=='Hold'){
+    let select=document.getElementById('token_status');
+    select.innerHTML=`
+    <option value="" selected>Hold</option>
+    <option value="Open">Open</option>
+    
+    <option value="Close" >Close</option>
+    `;
+  }
+  
+}
