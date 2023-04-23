@@ -12,13 +12,14 @@
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-
+        
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -32,6 +33,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -134,26 +136,25 @@
 
     </aside><!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <main id="main" class="main" style="padding-bottom:0; margin-top: 55px; margin-bottom: 0;">
 
-        <section class="message-area">
-            <div>
-                <div class="row ">
-                    <div class="col-9 m-0">
-                        <div class="chat-area">
+       
+            <div class="m-1 ml-0 ">
+                <div class="row">
+                    <div class="col-lg-9 col-sm-12 m-0 card" style="padding-bottom: 0px; margin-bottom:0px; ">
+                        <div class="chat-area" style="height:90vh;">
                             <!-- chatlist -->
                             <div class="chatlist">
                                 <div class="modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="chat-header">
-                                            <div class="msg-search m-2 ">
-                                                <input type="text" class="form-control" id="inlineFormInputGroup"
-                                                    placeholder="Search" aria-label="search">
+                                            <div class="msg-search m-2 mb-0 ml-3">
+                                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" aria-label="search">
                                             </div>
-
-
+    
+                                           
                                         </div>
-
+    
                                         <div class="modal-body">
                                             <!-- chat-list -->
                                             <div class="chat-lists">
@@ -168,7 +169,7 @@
 
 
                                                 </div>
-
+    
                                             </div>
                                             <!-- chat-list -->
                                         </div>
@@ -176,24 +177,20 @@
                                 </div>
                             </div>
                             <!-- chatlist -->
-
-
-
+    
+    
+    
                             <!-- chatbox -->
                             <div class="chatbox ">
                                 <div class="modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="msg-head">
                                             <div class="row">
-                                                <div class="col-8">
+                                                <div class="col-lg-8 col-sm-12">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="chat-icon"><img class="img-fluid"
-                                                                src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
-                                                                alt="image title"></span>
+                                                        <span class="chat-icon"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg" alt="image title"></span>
                                                         <div class="flex-shrink-0">
-                                                            <img class="img-fluid"
-                                                                src="https://mehedihtml.com/chatbox/assets/img/user.png"
-                                                                alt="user img">
+                                                            <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">
                                                             <h3>Mehedi Hasan</h3>
@@ -201,29 +198,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
-                                                    <ul class="moreoption">
-                                                        <li class="navbar nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                    class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                                <li><a class="dropdown-item" href="#">Another action</a>
-                                                                </li>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="#">Something else
-                                                                        here</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                
                                             </div>
                                         </div>
-
-
+    
+    
                                         <div class="modal-body">
                                             <div class="msg-body">
                                                 <ul>
@@ -231,59 +210,56 @@
                                                         <p> Hey, Are you there? </p>
                                                         <span class="time">10:06 am</span>
                                                     </li>
-
+                                                   
                                                     <li class="repaly" id="reciver">
                                                         <p>yes!</p>
                                                         <span class="time">10:20 am</span>
                                                     </li>
-
+    
                                                 </ul>
                                             </div>
                                         </div>
-
-
+    
+    
                                         <div class="send-box">
                                             <form action="">
-                                                <input type="text" class="form-control" aria-label="message…"
-                                                    placeholder="Write message…">
-
-                                                <button type="button"><i class="fa fa-paper-plane"
-                                                        aria-hidden="true"></i> Send</button>
+                                                <input type="text" class="form-control" aria-label="message…" placeholder="Write message…">
+    
+                                                <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
                                             </form>
-
-
-
+    
+    
+    
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- chatbox -->
-
-
+    
+    
                     </div>
-                    <div class="col">
-                        <div class="card ">
-
+                    <div class="col-lg-3 col-sm-12 m-0">
+                       <div class="card p-2 " style="border: none;">
+                        
                             <div class="row" style="font-size: 14px;">
-                                <div class="col-7 p-2 m-1">
-                                    <ul style="list-style: none;">
-                                        <li>Ticket Number</li>
-                                        <li>Ticket Status</li>
-                                        <li>Ticket created date</li>
-                                        <li>Last Seen</li>
-                                        <li>Priority</li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-4 p-2 m-1">
-                                    <ul style="list-style: none;">
-                                        <li id="ticketNo">--</li>
-                                        <li id="ticketStatus">--</li>
-                                        <li id="createdDate">--</li>
-                                        <li id="createdTime">--</li>
-                                        <li id="priority">--</li>
-
+                                <div class="col-6"><ul >
+                                    <li>Token Number :</li>
+                                    <li>Token Status :</li>
+                                    <li>created date :</li>
+                                    <li>created Time :</li>
+                    
+                                    <li>Priority :</li>
+    
+                                </ul></div>
+                                <div class="col-6">
+                                    <ul>
+                                        <li id="ticketNo">1234</li>
+                                        <li id="ticketStatus">open</li>
+                                        <li id="createdDate">23/03/2023</li>
+                                        <li id="createdTime"></li>
+                                        <li id="priority">High</li>
+        
                                     </ul>
                                 </div>
                             </div>
@@ -348,9 +324,9 @@
                         </script>
                     </div>
                 </div>
+             </div>
             </div>
-            </div>
-        </section>
+        
 
     </main>
 
