@@ -21,7 +21,7 @@ searchForm.addEventListener('submit', async function (e) {
             console.log(tokenVarification);
             if (tokenVarification.status == 200) {
                 localStorage.setItem('agent_id', id);
-                window.location.href = `dashboard.html`;                //redirect
+                window.location.href = `index.html`;                //redirect
                 // li.innerText = tokenVarification.data.message;
             }
         }

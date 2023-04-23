@@ -2,7 +2,7 @@ var token_type = localStorage.getItem('token_type');
 var agent_id = localStorage.getItem('agent_id');
 
 $.ajax({
-    url: `http://192.168.137.129:5000/${token_type}chats/` + 0,
+    url: `http://192.168.137.129:5000/${token_type}chats/${agent_id}`,
     type: "GET",
     dataType: "json",
     success: function (data) {

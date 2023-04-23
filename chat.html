@@ -33,13 +33,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -49,7 +42,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
+                <img src="assets/images/logo.png" alt="">
                 <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -125,7 +118,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed " href="dashboard.html">
+                <a class="nav-link collapsed " href="index.html">
                     <i class="bi bi-grid"></i><span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
@@ -135,19 +128,7 @@
                 <a class="nav-link collapsed" href="faq.html">
                     <i class="bi bi-book"></i><span>FAQ</span><i class=" ms-auto"></i>
                 </a>
-
             </li><!-- End FAQ Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gear"></i><span>Setting</span><i class="ms-auto"></i>
-                </a>
-
-            </li><!-- End Setting Nav -->
-
-
-
-
 
         </ul>
 
@@ -326,6 +307,18 @@
 
                         </div>
                         <div class="card">
+                            <div class="row">
+                                <div class="col-12">
+                                    <select class="form-control" id="status_data" onchange="changeStatus(this)">
+                                        <option value="open">Open</option>
+                                        <option value="live">Live</option>
+                                        <option value="hold">On Hold</option>
+                                        <option value="close">Close</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
 
                             <div class="row">
                                 <lable class="col align-self-center m-2">Transfer ticket</lable>
@@ -377,7 +370,46 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/chat.js"></script>
+    <!-- <script src="assets/js/chat.js"></script> -->
+
+    <script src="main_script.js"></script>
+    
+    <script>
+        //ticket status change functionality
+        function changeStatus(ele){
+            debugger
+            let ticketid = $('#ticketNo').text();
+            console.log(ele.value);
+            alert(ticketid);
+            if(ele.value == 'open'){
+                $.ajax({
+                    url : `http://192.168.137.129:5000/update_open/${ticketid}`,
+                    method: 'GET',
+                    success : function(result){
+                        alert('status Change Successfully')
+                    }
+                })
+            }else if(ele.value == 'hold'){
+                $.ajax({
+                    url : `http://192.168.137.129:5000/update_On_hold/${ticketid}`,
+                    method: 'GET',
+                    success : function(result){
+                        alert('status Change Successfully')
+
+                    }
+                })
+            }else if(ele.value == 'close'){
+                $.ajax({
+                    url : `http://192.168.137.129:5000/update_close/${ticketid}`,
+                    method: 'GET',
+                    success : function(result){
+                        alert('status Change Successfully')
+
+                    }
+                })
+            }
+        }
+    </script>
     <!-- <script src="assets/js/chat_transfer.js"></script> -->
 
 </body>

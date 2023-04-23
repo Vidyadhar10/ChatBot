@@ -1,90 +1,341 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <title>Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/dashboardStyle.css" rel="stylesheet">
 
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
-    <section class="ftco-section">
-        <div class="container">
 
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="wrap d-md-flex">
-                        <div class="img" style="background-image: url(assets/images/bg-1.jpg);">
-                        </div>
-                        <div class="login-wrap p-2 p-md-5">
-                            <div class="d-flex">
-                                <div class="w-100">
-                                    <h3 class="mb-4">Sign In</h3>
-                                </div>
-                                <div class="w-100">
-                                    <p class="social-media d-flex justify-content-end">
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"></a>
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"></a>
-                                    </p>
-                                </div>
-                            </div>
-                            <form id="searchForm" class="signin-form">
-                                <div class="form-group mb-1">
-                                    <label class="label" for="name">Agent ID</label>
-                                    <input type="number" class="form-control" placeholder="Agent ID" name="id" required>
-                                </div>
-                                <div class="form-group mb-1">
-                                    <label class="label" for="name">Username</label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username"
-                                        required>
-                                </div>
-                                <div class="form-group mb-1">
-                                    <label class="label" for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password"
-                                        required>
-                                </div>
-                                <ul id="ul"></ul>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-                                <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign
-                                        In</button>
-                                </div>
-                                <!-- <div class="form-group d-md-flex">
-									<div class="w-50 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="#">Forgot Password</a>
-									</div> -->
-                        </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/images/logo.png" alt="">
+        <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
 
-                        </form>
-                    </div>
-                </div>
+    <!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <div class="d-flex">
+              <i class="bi bi-person-fill"></i>
+              <span class="d-none d-md-block dropdown-toggle ps-2 agent_name ">Unknown</span>
             </div>
-        </div>
-        </div>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
+            <li class="dropdown-header">
+              <h6 class="agent_name"><b>Unknown</b></h6>
+              <span id="agent_role">Role</span>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="d-flex">
+              <div class="m-2 p-1">
+                <p>Username :</p>
+                <p>Agent Id :</p>
+                <p>Mobile No :</p>
+                <p>Status :</p>
+              </div>
+              <div class="m-2 p-1">
+                <p id="agent_username">username</p>
+                <p id="agent_id">id</p>
+                <p id="agent_mob">0000</p>
+                <p id="agent_status">Active</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right "></i><span id="logout">Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i><span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="faq.html">
+          <i class="bi bi-book"></i><span>FAQ</span><i class=" ms-auto"></i>
+        </a>
+
+      </li><!-- End FAQ Nav -->
+
+
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-3 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul> -->
+                </div>
+                <a id="open">
+                  <div class="card-body">
+                    <h5 class="card-title">Open Tokens</h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-folder2-open"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6 id="open_tickets_count">NaN</h6>
+
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div><!-- End Sales Card -->
+
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-3 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="filter">
+                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul> -->
+                </div>
+                <a id="live">
+                  <div class="card-body">
+                    <h5 class="card-title">Live Interactions</h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people-fill"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6 id="live_tickets_count">NaN</h6>
+
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+
+
+            <!-- Customers Card -->
+            <div class="col-xxl-3 col-md-6">
+
+              <div class="card info-card customers-card">
+
+                <div class="filter">
+                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul> -->
+                </div>
+
+                <a id="close">
+                  <div class="card-body">
+                    <h5 class="card-title">Closed Tokens </h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-person-check-fill"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6 id="closed_tickets_count">NaN</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </a>
+              </div>
+
+            </div><!-- End Customers Card -->
+
+
+            <!-- Hold Ticket Card -->
+
+            <div class="col-xxl-3 col-">
+
+              <div class="card info-card customers-card">
+
+                <div class="filter">
+                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
+  
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul> -->
+                </div>
+                <a id="on_hold">
+                  <div class="card-body">
+                    <h5 class="card-title"> On Hold Tokens </h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-person-exclamation"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6 id="hold_tickets_count">NaN</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </a>
+              </div>
+
+            </div>
+            <!-- End Of Hold Ticket Card -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+      </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="index.js"></script>
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Ajax section -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <script src="main_script.js"></script>
+
+  <!-- <script src="assets/js/dashboard.js"></script> -->
 
 </body>
 

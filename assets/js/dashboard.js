@@ -9,7 +9,7 @@ logoutBtn.addEventListener('click', function (e) {
             dataType: "json",
             success: function (data) {
                 localStorage.clear();
-                window.location.href = "../index.html"
+                window.location.href = "../login.html"
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -20,11 +20,12 @@ logoutBtn.addEventListener('click', function (e) {
         console.log(e);
     }
 });
+
 if (localStorage.getItem('agent_id') != "") {
 
     $(document).ready(function () {
+        
         var a_id = localStorage.getItem('agent_id');
-
         $.ajax({
             url: 'http://192.168.137.129:5000/agent/dashboard/' + a_id,
             type: "GET",
