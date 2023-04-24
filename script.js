@@ -1,5 +1,5 @@
 $.ajax({
-    url: 'http://192.168.137.129:5000/show_database',
+    url: 'http://192.168.137.62:5000/show_database',
     type: 'GET',
     dataType: "json",
     success: function (data) {
@@ -19,7 +19,7 @@ $.ajax({
 function InsertintoDatabase() {
 
     $.ajax({
-        url: 'http://192.168.137.129:5000/insert_database/',
+        url: 'http://192.168.137.62:5000/insert_database/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -31,10 +31,9 @@ function InsertintoDatabase() {
             "link": $('#solutionlink').val()
         }),
         success: function (data) {
-            var tbody = $('#KnowledgeBaseTable');
-            tbody.empty();
+            
             $.ajax({
-                url: 'http://192.168.137.129:5000/show_database',
+                url: 'http://192.168.137.62:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -60,7 +59,7 @@ function UpdateData() {
 
 
     $.ajax({
-        url: 'http://192.168.137.129:5000/update_database/'+id,
+        url: 'http://192.168.137.62:5000/update_database/' + id,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -71,11 +70,10 @@ function UpdateData() {
             "answer": $('#problemsolution').val(),
             "link": $('#solutionlink').val()
         }),
-        complete: function(){
-            var tbody = $('#KnowledgeBaseTable');
-            tbody.empty();
+        complete: function () {
+            
             $.ajax({
-                url: 'http://192.168.137.129:5000/show_database',
+                url: 'http://192.168.137.62:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -106,7 +104,7 @@ function PullToForm(id) {
     $('#UpdateBtn').removeClass('d-none');
     localStorage.setItem('UpdateValueID', id);
     $.ajax({
-        url: 'http://192.168.137.129:5000/pull_database/' + id + '',
+        url: 'http://192.168.137.62:5000/pull_database/' + id,
         type: 'GET',
         dataType: "json",
         success: function (data) {

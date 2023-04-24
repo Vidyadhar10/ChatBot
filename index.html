@@ -27,9 +27,11 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/dashboardStyle.css" rel="stylesheet">
   
   <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -51,7 +53,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/images/logo.png" alt="">
         <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -67,26 +69,19 @@
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <div class="d-flex">
               <i class="bi bi-person-fill"></i>
-              <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+              <span class="d-none d-md-block dropdown-toggle ps-2 agent_name ">Unknown</span>
             </div>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
             <li class="dropdown-header">
-              <h6><b>Yash Zad</b></h6>
-              <span>Web Designer</span>
+              <h6 class="agent_name"><b>Unknown</b></h6>
+              <span id="agent_role">Role</span>
             </li>
 
             <li>
               <hr class="dropdown-divider">
             </li>
-
-            <!-- <li class="dropdown-item-text">
-              <p> Username : Yash123</p>
-              <p > Agent_id : TT104 </p>
-              <p > Mobile No : 9857461230 </p>
-              <p > Status : 1 </p>
-            </li> -->
 
             <li class="d-flex">
               <div class="m-2 p-1">
@@ -96,10 +91,10 @@
                 <p>Status :</p>
               </div>
               <div class="m-2 p-1">
-                <p>Yash123</p>
-                <p>TT104</p>
-                <p>9874562130</p>
-                <p>Active</p>
+                <p id="agent_username">username</p>
+                <p id="agent_id">id</p>
+                <p id="agent_mob">0000</p>
+                <p id="agent_status">Active</p>
               </div>
             </li>
 
@@ -109,7 +104,7 @@
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
+                <i class="bi bi-box-arrow-right "></i><span id="logout">Sign Out</span>
               </a>
             </li>
 
@@ -145,7 +140,6 @@
 
 
 
-
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -173,16 +167,28 @@
             <div class="col-xxl-3 col-md-6">
               <div class="card info-card sales-card">
 
-                <a href="chat.html">
+                <div class="filter">
+                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul> -->
+                </div>
+                <a id="open">
                   <div class="card-body">
-                    <h5 class="card-title">Open Ticket </h5>
+                    <h5 class="card-title">Open Tokens</h5>
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-folder2-open"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="openTicketsCount"></h6>
+                        <h6 id="open_tickets_count">NaN</h6>
 
                       </div>
                     </div>
@@ -191,20 +197,33 @@
               </div>
             </div><!-- End Sales Card -->
 
+
             <!-- Revenue Card -->
             <div class="col-xxl-3 col-md-6">
               <div class="card info-card revenue-card">
 
-                <a href="chat.html">
+                <div class="filter">
+                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul> -->
+                </div>
+                <a id="live">
                   <div class="card-body">
-                    <h5 class="card-title">Live Interaction</h5>
+                    <h5 class="card-title">Live Interactions</h5>
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="LiveInteractionCount">11</h6>
+                        <h6 id="live_tickets_count">NaN</h6>
 
                       </div>
                     </div>
@@ -213,6 +232,8 @@
 
               </div>
             </div><!-- End Revenue Card -->
+
+
 
             <!-- Customers Card -->
             <div class="col-xxl-3 col-md-6">
@@ -234,13 +255,13 @@
 
                 <a onclick="cardtype('Close')">
                   <div class="card-body">
-                    <h5 class="card-title">Closed Ticket </h5>
+                    <h5 class="card-title">Closed Tokens </h5>
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-person-check-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="CloseTokenCount">10</h6>
+                        <h6 id="closed_tickets_count">NaN</h6>
                       </div>
                     </div>
 
@@ -250,22 +271,35 @@
 
             </div><!-- End Customers Card -->
 
+
             <!-- Hold Ticket Card -->
 
-            <div class="col-xxl-3 col-6">
+            <div class="col-xxl-3 col-">
 
               <div class="card info-card customers-card">
 
-                <a href="chat.html">
+                <div class="filter">
+                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
+  
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul> -->
+                </div>
+                <a id="on_hold">
                   <div class="card-body">
-                    <h5 class="card-title"> On Hold Ticket </h5>
+                    <h5 class="card-title"> On Hold Tokens </h5>
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-person-exclamation"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="OnHoldCount">10</h6>
+                        <h6 id="hold_tickets_count">NaN</h6>
                       </div>
                     </div>
 
@@ -288,6 +322,8 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Ajax section -->
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -300,6 +336,10 @@
   <script src="sweetalert2.all.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <script src="main_script.js"></script>
+
+  <!-- <script src="assets/js/dashboard.js"></script> -->
 
 </body>
 

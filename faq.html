@@ -32,14 +32,15 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
- 
+  <link href="assets/css/dashboardStyle.css" rel="stylesheet">
+  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+
+
   <!-- Form CDN -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
   </link>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -67,7 +68,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/images/logo.png" alt="">
         <span class="d-none d-lg-block">Compserv Consultants pvt ltd</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -81,10 +82,10 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-           <div class="d-flex">
-            <i class="bi bi-person-fill"></i>
-            <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
-           </div>
+            <div class="d-flex">
+              <i class="bi bi-person-fill"></i>
+              <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+            </div>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
@@ -105,7 +106,7 @@
             </li> -->
 
             <li class="d-flex">
-              <div class="m-2 p-1" >
+              <div class="m-2 p-1">
                 <p>Username :</p>
                 <p>Agent Id :</p>
                 <p>Mobile No :</p>
@@ -162,7 +163,7 @@
   </aside><!-- End Sidebar-->
 
 
-  <main id="main"  class="main">
+  <main id="main" class="main">
 
     <div class="container">
       <h4 style="color: #012970;">Knowledge Base Form</h4>
@@ -179,7 +180,7 @@
            
          </div>
 
-         <div class="row mt-3">
+          <div class="row mt-3">
             <div class="col-8"> <label for="tagt">Problem</label></div>
             <div class="col-4">  <label class="" for="section">Tag</label></div>
            
@@ -212,8 +213,8 @@
   
          </div>
 
-         <div class="text-end mt-3">
-           
+          <div class="text-end mt-3">
+
             <button class="btn btn-danger btn-sm">Cancel</button>
             <button type="submit" class="btn btn-primary btn-sm ml-2" id="PublishBtn" onclick="InsertintoDatabase()">Publish</button>
             <button type="submit" class="btn btn-primary btn-sm ml-2 d-none" id="UpdateBtn" onclick="UpdateData()">Update</button>
@@ -260,9 +261,9 @@
     <script>
       window.onload = function () {
         CKEDITOR.replace('myeditor', {
-  
+
           height: 100,
-       
+
           toolbarGroups: [
             { name: 'group1', groups: ['clipboard', 'editing', 'links', 'insert', 'styles', 'tools', 'document', 'others'] }
           ],
