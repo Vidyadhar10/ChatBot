@@ -3,8 +3,10 @@
 
 <head>
   <!-- AJAX JQuery CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -49,12 +51,21 @@
   <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
 
 
+  <!-- CDN FOR SWEET ALERT 2 -->
+  <script src="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js
+  "></script>
+  <link href="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css
+  " rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
   <!-- cdn for text area -->
   <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-  
-  <script src ="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="script.js"></script>
 
@@ -167,92 +178,229 @@
 
     <div class="container">
       <h4 style="color: #012970;">Knowledge Base Form</h4>
-        <form class=" mt-3" onsubmit="return false" id="KBForm">
-         <div class="card-body">
-         <div class="row">
+      <form class=" mt-3" onsubmit="return false" class="needs-validation" id="KBForm" novalidate>
+        <div class="card-body">
+          <div class="row">
             <div class="col"> <label for="Department">Department</label></div>
-            <div class="col">  <label class="" for="section">Section</label></div>
-           
-         </div>
-         <div class="row mt-1">
-            <div class="col"> <input type="text" class="form-control pt-1 pb-1" id="departmentname" placeholder="Department"></div>
-            <div class="col">  <input type="text" class="form-control pt-1 pb-1" id="sectionname" placeholder="Section"></div>
-           
-         </div>
+            <div class="col"> <label class="" for="section">Section</label></div>
+
+          </div>
+          <div class="row mt-1">
+            <div class="col">
+              <input type="text" class="form-control pt-1 pb-1" id="departmentname" placeholder="Department" required>
+              <div class="invalid-feedback">Please Enter Department !</div>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control pt-1 pb-1" id="sectionname" placeholder="Section" required>
+              <div class="invalid-feedback">Please Enter Section !</div>
+            </div>
+          </div>
 
           <div class="row mt-3">
             <div class="col-8"> <label for="tagt">Problem</label></div>
-            <div class="col-4">  <label class="" for="section">Tag</label></div>
-           
-         </div>
-         <div class="row mt-1">
-            <div class="col-8"> <input type="text" class="form-control pt-1 pb-1" id="problem" placeholder="Problem"></div>
-            <div class="col-4">  <input type="text" class="form-control pt-1 pb-1" id="tag" placeholder="Tag"></div>
-           
-         </div>
+            <div class="col-4"> <label class="" for="section">Tag</label></div>
 
-         <div class="row mt-3">
-           
-            <div class="col">  <label class=""  for="Solution">Solution</label></div>
-            
-           
-         </div>
-         <div class="row mt-1">
-            <div class="col">
-              <textarea name="" id="problemsolution" class="form-control" cols="25" placeholder="" required ></textarea>
+          </div>
+          <div class="row mt-1">
+            <div class="col-8">
+              <input type="text" class="form-control pt-1 pb-1" id="problem" placeholder="Problem" required>
+              <div class="invalid-feedback">Please Enter Problem Statement !</div>
             </div>
-  
-         </div>
-         <div class="row mt-3">
-           
-            <div class="col">  <label class="" for="link">Link</label></div>
-           
-         </div>
-         <div class="row">
-            <div class="col-6"> <input type="url"  id="solutionlink" class="form-control pt-1 pb-1"></div>
-  
-         </div>
+            <div class="col-4">
+              <input type="text" class="form-control pt-1 pb-1" id="tag" placeholder="Tag" required>
+              <div class="invalid-feedback">Please Enter Tag !</div>
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col"> <label class="" for="Solution">Solution</label></div>
+
+
+          </div>
+          <div class="row mt-1">
+            <div class="col">
+              <textarea name="" id="myeditor" class="form-control" cols="25" placeholder="" required></textarea>
+              <div class="invalid-feedback">Please Enter Solution !</div>
+            </div>
+
+          </div>
+          <div class="row mt-3">
+
+            <div class="col"> <label class="" for="solutionlink">Link</label></div>
+
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input type="url" id="solutionlink" class="form-control pt-1 pb-1" required>
+              <div class="invalid-feedback">Please Enter Link !</div>
+            </div>
+
+          </div>
 
           <div class="text-end mt-3">
 
-            <button class="btn btn-danger btn-sm">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-sm ml-2" id="PublishBtn" onclick="InsertintoDatabase()">Publish</button>
-            <button type="submit" class="btn btn-primary btn-sm ml-2 d-none" id="UpdateBtn" onclick="UpdateData()">Update</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-2" id="PublishBtn">Publish</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-2 d-none" id="UpdateBtn">Update</button>
             <button class="btn btn-primary btn-sm ml-2 " id="ResetBtn" onclick="location.reload()">Reset Form</button>
-           
-         </div>
-      </div>
-         
-        </form>
-        <hr>
+
+          </div>
+        </div>
+
+      </form>
+
+      <script>
+        const form = document.querySelector('#KBForm');
+
+        $('#PublishBtn').click(function () {
+
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault(); // Prevent the form from submitting
+              // Display an error message or take other actions
+              form.classList.add('was-validated')
+
+            } else {
+              // The form is valid, submit it
+              InsertData();
+              form.classList.remove('was-validated')
+
+            }
+          });
+        })
 
 
-        
-        <table  style="font-size:13px;" id="example" class="cell-border hover compact text-center" style=" width:100%;">
-          <thead>
-              <tr class="mt-3  bg-dark-light">
-                  <th class="text-center">Department</th>
-                  <th class="text-center">Section</th>
-                  <th class="text-center">Problem</th>
-                  <th class="text-center">Tag</th>
-                  <th class="text-center">Solution</th>
-                  <th class="text-center">link</th>
-              </tr>
-          </thead>
-          <tbody id="KnowledgeBaseTable">
-           
-          </tbody>  
-             
+        $('#UpdateBtn').click(function () {
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault(); // Prevent the form from submitting
+              // Display an error message or take other actions
+              form.classList.add('was-validated')
+
+            } else {
+              UpdateKnowBaseData();
+              form.classList.remove('was-validated')
+
+            }
+          });
+        })
+        function InsertData() {
+
+          Swal.fire({
+
+            title: 'Add?',
+            // icon: 'question',
+            text: 'Do you want to add this Data ?',
+            showDenyButton: true,
+            width: '400px',
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              InsertintoDatabase();
+              Swal.fire({
+                icon: 'success',
+                title: 'Saved',
+                width: '400px',
+                text: 'Data added to database '
+              })
+              $('#KBForm').reset();
+              document.querySelector('#KBForm').classList.remove('was-validated')
+
+            }
+          });
+        }
+
+        function UpdateKnowBaseData() {
+
+          Swal.fire({
+
+            title: 'Update?',
+            // icon: 'question',
+            text: 'Do you want to update this Data ?',
+            showDenyButton: true,
+            width: '400px',
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              UpdateData();
+              Swal.fire({
+                icon: 'success',
+                title: 'Updated',
+                width: '400px',
+                text: 'Data updated to database '
+              })
+              $('#KBForm').reset();
+              document.querySelector('#KBForm').classList.remove('was-validated')
+
+            }
+          });
+        }
+
+      </script>
+      <hr>
+
+
+
+      <table style="font-size:13px;" id="example" class="cell-border hover compact text-center" style=" width:100%;">
+        <thead>
+          <tr class="mt-3  bg-dark-light">
+            <th class="text-center">Department</th>
+            <th class="text-center">Section</th>
+            <th class="text-center">Problem</th>
+            <th class="text-center">Tag</th>
+            <th class="text-center">Solution</th>
+            <th class="text-center d-none">link</th>
+            <th class="text-center">link</th>
+          </tr>
+        </thead>
+        <tbody id="KnowledgeBaseTable">
+
+        </tbody>
+
       </table>
-    
-     </div>
-     <script>
+
+    </div>
+    <script>
+
+
+
+
+
       $(document).ready(function () {
-        $('#example').DataTable();
+        // $('#example').DataTable();
+        let table = $('#example').DataTable();
+
+        $('#example tbody').on('click', 'tr', function(){
+          let rowData = table.row(this).data();
+          console.log(rowData[0]);
+          PullToForm(rowData[0]);
+          $('html, body').animate({ scrollTop: 0}, 'smooth');
+        })
       });
       $(document).ready(function () {
         $('.dataTables_filter input[type="search"]').css(
-          { 'width': '100px', 'height': '30px', 'display': 'inline-block','margin-bottom':'10px','margin-top':'10px' }
+          { 'width': '100px', 'height': '30px', 'display': 'inline-block', 'margin-bottom': '10px', 'margin-top': '10px' }
         );
       });
     </script>
@@ -272,9 +420,13 @@
       };
     </script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
 
 
   </main>

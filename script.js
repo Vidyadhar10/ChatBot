@@ -1,25 +1,25 @@
 $.ajax({
-    url: 'http://192.168.137.62:5000/show_database',
+    url: 'http://192.168.137.129:5000/show_database',
     type: 'GET',
     dataType: "json",
     success: function (data) {
         $.each(data, function (index, item) {
             $('#KnowledgeBaseTable').append($('<tr>')
+                .append($('<td>').attr('class', 'd-none').text(item.id))
                 .append($('<td>').text(item.department))
                 .append($('<td>').text(item.section))
-                .append($('<td>').append($('<a>').attr('href', '#').attr('onclick', 'PullToForm(' + item.id + ')').text(item.problem)))
+                .append($('<td>').text(item.problem))
                 .append($('<td>').text(item.tag))
-                .append($('<td>').text(item.answer))
+                .append($('<td>').html(item.answer))
                 .append($('<td>').append($('<a>').attr('href', item.link).attr('target', 'blank').text(item.link))));
         });
     }
 });
 
-
 function InsertintoDatabase() {
-
+    var ckValue = CKEDITOR.instances["myeditor"].getData();
     $.ajax({
-        url: 'http://192.168.137.62:5000/insert_database/',
+        url: 'http://192.168.137.129:5000/insert_database/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -27,13 +27,13 @@ function InsertintoDatabase() {
             "section": $('#sectionname').val(),
             "tag": $('#tag').val(),
             "problem": $('#problem').val(),
-            "answer": $('#problemsolution').val(),
+            "answer": ckValue,
             "link": $('#solutionlink').val()
         }),
         success: function (data) {
-            
+
             $.ajax({
-                url: 'http://192.168.137.62:5000/show_database',
+                url: 'http://192.168.137.129:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -56,10 +56,10 @@ function InsertintoDatabase() {
 
 function UpdateData() {
     var id = localStorage.getItem('UpdateValueID');
-
+    var ckValue = CKEDITOR.instances["myeditor"].getData();
 
     $.ajax({
-        url: 'http://192.168.137.62:5000/update_database/' + id,
+        url: 'http://192.168.137.129:5000/update_database/' + id,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -67,13 +67,13 @@ function UpdateData() {
             "section": $('#sectionname').val(),
             "tag": $('#tag').val(),
             "problem": $('#problem').val(),
-            "answer": $('#problemsolution').val(),
+            "answer": ckValue,
             "link": $('#solutionlink').val()
         }),
         complete: function () {
-            
+
             $.ajax({
-                url: 'http://192.168.137.62:5000/show_database',
+                url: 'http://192.168.137.129:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -92,7 +92,7 @@ function UpdateData() {
             });
         },
         success: function (data) {
-            localStorage.clear();
+            localStorage.removeItem('UpdateValueID');
         }
     });
 
@@ -104,7 +104,7 @@ function PullToForm(id) {
     $('#UpdateBtn').removeClass('d-none');
     localStorage.setItem('UpdateValueID', id);
     $.ajax({
-        url: 'http://192.168.137.62:5000/pull_database/' + id,
+        url: 'http://192.168.137.129:5000/pull_database/' + id,
         type: 'GET',
         dataType: "json",
         success: function (data) {
@@ -113,7 +113,7 @@ function PullToForm(id) {
                 $('#sectionname').val(item.section);
                 $('#problem').val(item.problem);
                 $('#tag').val(item.tag);
-                $('#problemsolution').val(item.answer);
+                CKEDITOR.instances["myeditor"].setData(item.answer);
                 $('#solutionlink').val(item.link);
             });
 

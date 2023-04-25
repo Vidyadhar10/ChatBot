@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/images/favicon.png" rel="icon">
+  <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -32,7 +32,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/dashboardStyle.css" rel="stylesheet">
-  
+
   <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -336,8 +336,60 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  
+
   <script src="main_script.js"></script>
+  <script>
+    //Dashboard Counts
+    $(document).ready(function () {
+
+      //if id does'nt exist logout
+      if(!localStorage.getItem('agent_id')){
+          window.location.href = "login.html";
+      }
+
+      if (localStorage.getItem('agent_id')) {
+
+        let a_id = localStorage.getItem('agent_id');
+        $.ajax({
+          url: `http://192.168.137.129:5000/agent/dashboard/${a_id}`,
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            $("#open_tickets_count").text(data['open_token']);
+            $("#live_tickets_count").text(data['live_token']);
+            $("#closed_tickets_count").text(data['close_token']);
+            $("#hold_tickets_count").text(data['hold_token']);
+            
+            // User details
+            $.ajax({
+              url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
+              method: 'GET',
+              dataType: "json",
+              success: function (data) {
+                // console.log(data);
+                $(".agent_name").text(data[0]['agent_name']);
+                $("#agent_role").text(data[0]['role']);
+                $("#agent_username").text(data[0]['username']);
+                $("#agent_id").text(data[0]['agent_id']);
+                $("#agent_mob").text(data[0]['mobile_number']);
+                $("#agent_status").text(data[0]['status']);
+                localStorage.removeItem('token_type');
+
+              }
+            });
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+          }
+        });
+      }
+      localStorage.removeItem('token_type');
+
+    })
+
+    
+  </script>
 
   <!-- <script src="assets/js/dashboard.js"></script> -->
 

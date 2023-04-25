@@ -35,6 +35,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <script src="WebSoc.js"></script>
 
 </head>
 
@@ -211,36 +212,7 @@
 
                                     <div class="modal-body">
                                         <div class="msg-body" id="ChattingBody">
-                                            <ul>
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
+                                            <ul id="ChatList">
                                                 <li class="sender" id="sender">
                                                     <p> Hey, Are you there? </p>
                                                     <span class="time">10:06 am</span>
@@ -255,7 +227,6 @@
                                         </div>
                                     </div>
                                     <script>
-                                        // get the last message in the chat body
                                         // get the chat body element
                                         var chatBody = document.getElementById('ChattingBody');
 
@@ -278,11 +249,11 @@
 
 
                                     <div class="send-box">
-                                        <form action="">
-                                            <input type="text" class="form-control" aria-label="message…"
+                                        <form action="" onsubmit="sendMessage(event)">
+                                            <input type="text" id="UserInputBox" class="form-control" aria-label="message…"
                                                 placeholder="Write message…">
 
-                                            <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
                                                 Send</button>
                                         </form>
 
@@ -411,9 +382,15 @@
     <script src="main_script.js"></script>
 
     <script>
+        $(document).ready(function(){
+            //if id does'nt exist logout
+            if(!localStorage.getItem('agent_id')){
+                window.location.href = "login.html";
+            }
+        })
         //ticket status change functionality
         function changeStatus(ele) {
-            debugger
+            
             let ticketid = $('#ticketNo').text();
             console.log(ele.value);
             alert(ticketid);

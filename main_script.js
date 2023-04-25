@@ -1,75 +1,56 @@
 
 // Login Page Script Starts here 
 
-// Check if the search form and list elements are present on the page
-const searchForm = document.querySelector('#searchForm');
-const ul = document.querySelector('#ul');
+function LoginToHome() {
+    const id = $('#Agent_ID').val();
+    const username = $('#Agent_username').val();
+    const password = $('#Agent_password').val();
 
-if (searchForm && ul) { // Only execute the code if the elements are present
+    console.log(username);
+    $.ajax({
+        url: `http://192.168.137.129:5000/login/${id}?username=${username}&password=${password}`,
+        // type: "POST",
+        method: 'post',
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            
+                localStorage.setItem('agent_id', data.agent_id);
 
-    // Add an event listener to the search form
-    searchForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // Get the values of the form fields
-        const id = searchForm.elements.id.value;
-        const username = searchForm.elements.username.value;
-        const password = searchForm.elements.password.value;
-
-        // Create a new li element to display the result
-        const li = document.createElement('li');
-
-        try {
-            // Send a POST request to the login endpoint
-            const res = await axios.post(`http://192.168.137.62:5000/login/${id}?username=${username}&password=${password}`);
-            console.log(res.data);
-            const token = res.data.token;
-
-            try {
-                // Send a GET request to the protected endpoint with the token
-                const tokenVerification = await axios.get(`http://192.168.137.62:5000/protected/${token}`);
-                console.log(tokenVerification);
-
-                if (tokenVerification.status === 200) { //&& tokenVerification.data.message === 'success'
-                    // Set the agent ID in local storage
-                    localStorage.setItem('agent_id', id);
-
-                    // Redirect to the index.html page
-                    window.location.href = `index.html`;
-                } else {
-                    li.innerText = 'Invalid token';
-                    ul.appendChild(li);
-                }
-            } catch (err) {
-                li.innerText = 'Invalid token';
-                ul.appendChild(li);
-            }
-        } catch (err) {
-            li.innerText = 'Invalid credentials';
-            ul.appendChild(li);
-        }
-    });
+                let tokenRecieved = data.token;
+                $.ajax({
+                    url: `http://192.168.137.129:5000/protected/${tokenRecieved}`,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(data2){
+                        console.log(data2);
+                        window.location.href='index.html';
+                    },
+                    
+                })
+            
+        },
+        
+    })
 }
-
 
 //Login page script ends here
 
 //Dashboard Script START
 
-var agent_id = localStorage.getItem('agent_id');
-
 let logoutBtn = document.querySelector('#logout');
 if (logoutBtn) {
+    let agent_id = localStorage.getItem('agent_id');
 
     logoutBtn.addEventListener('click', function (e) {
         try {
             $.ajax({
-                url: "http://192.168.137.62:5000/logout/" + agent_id,
+                url: `http://192.168.137.129:5000/logout/${agent_id}`,
                 type: "POST",
                 dataType: "json",
                 success: function (data) {
                     localStorage.clear();
-                    window.location.href = "login.html"
+                    window.location.href = "login.html";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
@@ -83,51 +64,8 @@ if (logoutBtn) {
 }
 
 
-if (localStorage.getItem('agent_id') != "") {
 
-    $(document).ready(function () {
 
-        var a_id = localStorage.getItem('agent_id');
-        $.ajax({
-            url: 'http://192.168.137.62:5000/agent/dashboard/' + a_id,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-                // $.each(data, function (index, item) {
-                //     $('#departmentname').val(item.department);
-
-                // });
-                $("#open_tickets_count").text(data['open_token']);
-                $("#live_tickets_count").text(data['live_token']);
-                $("#closed_tickets_count").text(data['close_token']);
-                $("#hold_tickets_count").text(data['hold_token']);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            }
-        });
-
-        $.ajax({
-            url: "http://192.168.137.62:5000/get_agent_info/" + agent_id,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                // console.log(data);
-                $(".agent_name").text(data[0]['agent_name']);
-                $("#agent_role").text(data[0]['role']);
-                $("#agent_username").text(data[0]['username']);
-                $("#agent_id").text(data[0]['agent_id']);
-                $("#agent_mob").text(data[0]['mobile_number']);
-                $("#agent_status").text(data[0]['status']);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            }
-        });
-    })
-
-}
 
 // dashboard cards redirections
 $('#open').click(function () {
@@ -152,21 +90,25 @@ $('#on_hold').click(function () {
 
 // Chat.html page Scripts START
 
-var token_type = localStorage.getItem('token_type');
-var agent_id = localStorage.getItem('agent_id');
 
-$.ajax({
-    url: `http://192.168.137.62:5000/${token_type}chats/${agent_id}`,
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-        for (let i of data) {
-            var username = i.user_name;
-            var token_id = i.token_id;
-            var imgUrl = "https://mehedihtml.com/chatbox/assets/img/user.png";
+$(document).ready(function () {
 
-            // Create a new anchor tag with dynamic data
-            var $newAnchorTag = $(`<a class="d-flex  align-items-center hov chat_name">
+    if (localStorage.getItem('token_type') && localStorage.getItem('agent_id')) {
+        var token_type = localStorage.getItem('token_type');
+        var agent_id = localStorage.getItem('agent_id');
+
+        $.ajax({
+            url: `http://192.168.137.129:5000/${token_type}chats/${agent_id}`,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                for (let i of data) {
+                    var username = i.user_name;
+                    var token_id = i.token_id;
+                    var imgUrl = "https://mehedihtml.com/chatbox/assets/img/user.png";
+
+                    // Create a new anchor tag with dynamic data
+                    var $newAnchorTag = $(`<a class="d-flex  align-items-center hov chat_name">
                             <div class="flex-shrink-0">
                                 <img class="img-fluid"
                                     src="${imgUrl}"
@@ -179,25 +121,31 @@ $.ajax({
                             </div>
                         </a>`);
 
-            // Add the new anchor tag to an existing element on the page
-            $('#chat_list').append($newAnchorTag);
+                    // Add the new anchor tag to an existing element on the page
+                    $('#chat_list').append($newAnchorTag);
 
-            $(document).on('click', '.chat_name', function () {
-                var getToken = $(this).find('h3:last').text();
-                getUserInfo(1, getToken);             //here user id is static
-            });
+                    $(document).on('click', '.chat_name', function () {
+                        var getToken = $(this).find('h3:last').text();
+                        getUserInfo(1, getToken);             //here user id is static
+                    });
 
-        }
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    } else {
+        localStorage.removeItem('token_type');
     }
-});
+
+})
+
 
 
 function getUserInfo(user_id, tokenId) {
     $.ajax({
-        url: `http://192.168.137.62:5000/get_user_info/${user_id}/${tokenId}`,
+        url: `http://192.168.137.129:5000/get_user_info/${user_id}/${tokenId}`,
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -217,3 +165,4 @@ function getUserInfo(user_id, tokenId) {
 }
 
 // Chat .html page script END
+
