@@ -21,13 +21,13 @@ if (searchForm && ul) { // Only execute the code if the elements are present
 
         try {
             // Send a POST request to the login endpoint
-            const res = await axios.post(`http://192.168.137.62:5000/login/${id}?username=${username}&password=${password}`);
+            const res = await axios.post(`http://192.168.137.166:5000/login/${id}?username=${username}&password=${password}`);
             console.log(res.data);
             const token = res.data.token;
 
             try {
                 // Send a GET request to the protected endpoint with the token
-                const tokenVerification = await axios.get(`http://192.168.137.62:5000/protected/${token}`);
+                const tokenVerification = await axios.get(`http://192.168.137.166:5000/protected/${token}`);
                 console.log(tokenVerification);
 
                 if (tokenVerification.status === 200) { //&& tokenVerification.data.message === 'success'
@@ -64,7 +64,7 @@ if (logoutBtn) {
     logoutBtn.addEventListener('click', function (e) {
         try {
             $.ajax({
-                url: "http://192.168.137.62:5000/logout/" + agent_id,
+                url: "http://192.168.137.166:5000/logout/" + agent_id,
                 type: "POST",
                 dataType: "json",
                 success: function (data) {
@@ -89,7 +89,7 @@ if (localStorage.getItem('agent_id') != "") {
 
         var a_id = localStorage.getItem('agent_id');
         $.ajax({
-            url: 'http://192.168.137.62:5000/agent/dashboard/' + a_id,
+            url: 'http://192.168.137.166:5000/agent/dashboard/' + a_id,
             type: "GET",
             dataType: "json",
             success: function (data) {
@@ -109,7 +109,7 @@ if (localStorage.getItem('agent_id') != "") {
         });
 
         $.ajax({
-            url: "http://192.168.137.62:5000/get_agent_info/" + agent_id,
+            url: "http://192.168.137.166:5000/get_agent_info/" + agent_id,
             type: "GET",
             dataType: "json",
             success: function (data) {
@@ -156,7 +156,7 @@ var token_type = localStorage.getItem('token_type');
 var agent_id = localStorage.getItem('agent_id');
 
 $.ajax({
-    url: `http://192.168.137.62:5000/${token_type}chats/${agent_id}`,
+    url: `http://192.168.137.166:5000/${token_type}chats/${agent_id}`,
     type: "GET",
     dataType: "json",
     success: function (data) {
@@ -197,7 +197,7 @@ $.ajax({
 
 function getUserInfo(user_id, tokenId) {
     $.ajax({
-        url: `http://192.168.137.62:5000/get_user_info/${user_id}/${tokenId}`,
+        url: `http://192.168.137.166:5000/get_user_info/${user_id}/${tokenId}`,
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -217,3 +217,5 @@ function getUserInfo(user_id, tokenId) {
 }
 
 // Chat .html page script END
+
+//faq validation

@@ -1,93 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <title>Login - Task Tracker</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- icons -->
+  <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+
+ <link rel="stylesheet" href="assets\css\dashboardStyle.css">
+
+ <script src ="https://code.jquery.com/jquery-3.5.1.js"></script>
+
 
 </head>
 
-<body>
-    <section class="ftco-section">
-        <div class="container">
+<body style="background-image: linear-gradient(to right,white, #6699CC ,white);">
 
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="wrap d-md-flex">
-                        <div class="img" style="background-image: url(assets/images/bg-1.jpg);">
+  <main>      
+      <section class="vh-100">
+        
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-9">            
+              <div class="card">
+                <div class="row g-0">
+                  <div class="col-md-7 col-lg-6 d-flex align-items-center" >
+                    <img src="assets\images\bg-1.jpg" alt="login form" class="img-fluid" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;"/>
+                  </div>
+
+                  <div class="col-md-5 col-lg-6 ">
+                    
+                    <div class="card-body  text-black">
+                      <!-- End Logo -->
+                      <h3 class="text-start mt-5 text-primary">Login</h3>
+
+                      <form id="searchForm" class="signin-form">
+                        <div class="form-group mb-1">
+                            <label class="label mt-3" for="name">Agent ID</label>
+                            <input type="number" class="form-control mt-2" placeholder="Agent ID" name="id" required>
                         </div>
-                        <div class="login-wrap p-2 p-md-5">
-                            <div class="d-flex">
-                                <div class="w-100">
-                                    <h3 class="mb-4">Sign In</h3>
-                                </div>
-                                <div class="w-100">
-                                    <p class="social-media d-flex justify-content-end">
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"></a>
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"></a>
-                                    </p>
-                                </div>
-                            </div>
-                            <form id="searchForm" class="signin-form">
-                                <div class="form-group mb-1">
-                                    <label class="label" for="name">Agent ID</label>
-                                    <input type="number" class="form-control" placeholder="Agent ID" name="id" required>
-                                </div>
-                                <div class="form-group mb-1">
-                                    <label class="label" for="name">Username</label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username"
-                                        required>
-                                </div>
-                                <div class="form-group mb-1">
-                                    <label class="label" for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password"
-                                        required>
-                                </div>
-                                <ul id="ul"></ul>
-
-                                <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign
-                                        In</button>
-                                </div>
-                                <!-- <div class="form-group d-md-flex">
-									<div class="w-50 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="#">Forgot Password</a>
-									</div> -->
+                        <div class="form-group mb-1">
+                            <label class="label mt-1" for="name">Username</label>
+                            <input type="text" class="form-control mt-2" placeholder="Username" name="username"
+                                required>
                         </div>
+                        <div class="form-group mb-1">
+                            <label class="label mt-1" for="password">Password</label>
+                            <input type="password" class="form-control mt-2" placeholder="Password" name="password"
+                                required>
+                        </div>
+                        <ul id="ul"></ul>
 
-                        </form>
-                    </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign
+                                In</button>
+                        </div>
+                       
                 </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <!-- <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script> -->
-    <!-- <script src="assets/js/main.js"></script> -->
 
-    <!-- main script -->
-    <script src="main_script.js"></script>
-    <!-- <script src="index.js"></script> -->
+                </form>
+
+
+                </div>
+              </div>
+            </div>
+            
+        
+              
+              
+            </div>
+            
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  
+
+  <!-- Template Main JS File -->
+ 
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <script src="main_script.js"></script>
 
 </body>
 
