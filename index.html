@@ -33,7 +33,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/dashboardStyle.css" rel="stylesheet">
 
-  <script src="script.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- script  -->
@@ -57,13 +57,22 @@
         <span class="d-none d-lg-block">Support</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
+      <div class="pagetitle m-3 breadcrumbItems">
+        <h1>Dashboard</h1>
+      </div>
     </div><!-- End Logo -->
 
     <!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
 
+      <ul class="d-flex align-items-center">
+        <nav class="m-3 breadcrumbItems">
+          <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -146,7 +155,7 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
+    <div class="pagetitle MobileSize">
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
@@ -342,9 +351,9 @@
     //Dashboard Counts
     $(document).ready(function () {
 
-      //if id does'nt exist logout
-      if(!localStorage.getItem('agent_id')){
-          window.location.href = "login.html";
+      //if id does'nt exist => logout
+      if (!localStorage.getItem('agent_id')) {
+        window.location.href = "login.html";
       }
 
       if (localStorage.getItem('agent_id')) {
@@ -360,7 +369,7 @@
             $("#live_tickets_count").text(data['live_token']);
             $("#closed_tickets_count").text(data['close_token']);
             $("#hold_tickets_count").text(data['hold_token']);
-            
+
             // User details
             $.ajax({
               url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
@@ -388,7 +397,7 @@
 
     })
 
-    
+
   </script>
 
   <!-- <script src="assets/js/dashboard.js"></script> -->

@@ -34,12 +34,11 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
     <script src="WebSoc.js"></script>
 
 </head>
 
-<body onload=" checkpagetype()">
+<body onload="checkpagetype()">
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -47,7 +46,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/images/logo.png" alt="">
-                <span class="d-none d-lg-block">Support</span>
+                <span class="d-none d-lg-block ml-2">Support</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -62,14 +61,14 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <div class="d-flex">
                             <i class="bi bi-person-fill"></i>
-                            <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2 agent_name"></span>
                         </div>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
                         <li class="dropdown-header">
-                            <h6><b>Yash Zad</b></h6>
-                            <span>Web Designer</span>
+                            <h6><b class="agent_name">ABC</b></h6>
+                            <span id="agent_role">Web Designer</span>
                         </li>
 
                         <li>
@@ -91,10 +90,10 @@
                                 <p>Status :</p>
                             </div>
                             <div class="m-2 p-1">
-                                <p>Yash123</p>
-                                <p>TT104</p>
-                                <p>9874562130</p>
-                                <p>Active</p>
+                                <p id="agent_username"></p>
+                                <p id="agent_id"></p>
+                                <p id="agent_mob"></p>
+                                <p id="agent_status"></p>
                             </div>
                         </li>
 
@@ -141,11 +140,12 @@
     <main id="main" class="main" style="padding-bottom:0; margin-top: 55px; margin-bottom: 0;">
 
 
-        <div class="m-1 ml-0 ">
+        <div class="container m-0 p-0">
             <div class="row">
-                <div class="col-lg-9 col-sm-12 m-0 card" style="padding-bottom: 0px; margin-bottom:0px; ">
-                    <div class="chat-area" style="height:90vh;">
-                        <!-- chatlist -->
+                <div class="col-lg-9 col-sm-12 card" style="padding-bottom: 0px; margin-bottom:0px; ">
+                    <div class="chat-area">
+
+                        <!-- chatlist starts -->
                         <div class="chatlist">
                             <div class="modal-dialog-scrollable">
                                 <div class="modal-content">
@@ -166,10 +166,8 @@
                                                 <!-- chat-list -->
                                                 <div class="chat-list m-2 " id="chat_list">
 
-
                                                 </div>
                                                 <!-- chat-list -->
-
 
                                             </div>
 
@@ -179,7 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- chatlist -->
+                        <!-- chatlist ends -->
 
 
 
@@ -245,13 +243,10 @@
 
                                     </script>
 
-
-
-
                                     <div class="send-box">
                                         <form action="" onsubmit="sendMessage(event)">
-                                            <input type="text" id="UserInputBox" class="form-control" aria-label="message…"
-                                                placeholder="Write message…">
+                                            <input type="text" id="UserInputBox" class="form-control"
+                                                aria-label="message…" placeholder="Write message…">
 
                                             <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
                                                 Send</button>
@@ -269,22 +264,20 @@
 
                 </div>
                 <div class="col-lg-3 col-sm-12 m-0">
-                    <div class="card p-2 " style="border: none;">
+                    <div class="card pt-2" style="border: none;">
 
                         <div class="row" style="font-size: 14px;">
-                            <div class="col-6">
-                                <ul>
+                            <div class="col">
+                                <ul style="list-style: none;">
                                     <li>Token Number :</li>
                                     <li>Token Status :</li>
                                     <li>created date :</li>
                                     <li>created Time :</li>
-
                                     <li>Priority :</li>
-
                                 </ul>
                             </div>
-                            <div class="col-6">
-                                <ul>
+                            <div class="col">
+                                <ul style="list-style: none;">
                                     <li id="ticketNo">1234</li>
                                     <li id="ticketStatus">open</li>
                                     <li id="createdDate">23/03/2023</li>
@@ -382,15 +375,33 @@
     <script src="main_script.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             //if id does'nt exist logout
-            if(!localStorage.getItem('agent_id')){
+            if (!localStorage.getItem('agent_id')) {
                 window.location.href = "login.html";
+            } else {
+                let a_id = localStorage.getItem('agent_id');
+                $.ajax({
+                    url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
+                    method: 'GET',
+                    dataType: "json",
+                    success: function (data) {
+                        // console.log(data);
+                        $(".agent_name").text(data[0]['agent_name']);
+                        $("#agent_role").text(data[0]['role']);
+                        $("#agent_username").text(data[0]['username']);
+                        $("#agent_id").text(data[0]['agent_id']);
+                        $("#agent_mob").text(data[0]['mobile_number']);
+                        $("#agent_status").text(data[0]['status']);
+                        localStorage.removeItem('token_type');
+
+                    }
+                });
             }
         })
         //ticket status change functionality
         function changeStatus(ele) {
-            
+
             let ticketid = $('#ticketNo').text();
             console.log(ele.value);
             alert(ticketid);

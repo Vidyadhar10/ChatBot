@@ -14,23 +14,23 @@ function LoginToHome() {
         dataType: "json",
         success: function (data) {
             console.log(data);
-            
-                localStorage.setItem('agent_id', data.agent_id);
 
-                let tokenRecieved = data.token;
-                $.ajax({
-                    url: `http://192.168.137.129:5000/protected/${tokenRecieved}`,
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function(data2){
-                        console.log(data2);
-                        window.location.href='index.html';
-                    },
-                    
-                })
-            
+            localStorage.setItem('agent_id', data.agent_id);
+
+            let tokenRecieved = data.token;
+            $.ajax({
+                url: `http://192.168.137.129:5000/protected/${tokenRecieved}`,
+                method: 'GET',
+                dataType: 'json',
+                success: function (data2) {
+                    console.log(data2);
+                    window.location.href = 'index.html';
+                },
+
+            })
+
         },
-        
+
     })
 }
 

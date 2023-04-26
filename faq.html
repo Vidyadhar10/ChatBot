@@ -95,13 +95,13 @@
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <div class="d-flex">
               <i class="bi bi-person-fill"></i>
-              <span class="d-none d-md-block dropdown-toggle ps-2">Yash Zad</span>
+              <span class="d-none d-md-block dropdown-toggle ps-2 agent_name"></span>
             </div>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu  dropdown-menu-lg-start profile ">
             <li class="dropdown-header">
-              <h6><b>Yash Zad</b></h6>
+              <h6><b class="agent_name">Yash Zad</b></h6>
               <span>Web Designer</span>
             </li>
 
@@ -124,10 +124,10 @@
                 <p>Status :</p>
               </div>
               <div class="m-2 p-1">
-                <p>Yash123</p>
-                <p>TT104</p>
-                <p>9874562130</p>
-                <p>Active</p>
+                <p id="agent_username"></p>
+                <p id="agent_id"></p>
+                <p id="agent_mob"></p>
+                <p id="agent_status">Active</p>
               </div>
             </li>
 
@@ -136,8 +136,8 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
+              <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
+                <i class="bi bi-box-arrow-right"></i><span>Sign Out</span>
               </a>
             </li>
 
@@ -177,7 +177,11 @@
   <main id="main" class="main">
 
     <div class="container">
-      <h4 style="color: #012970;">Knowledge Base Form</h4>
+      <div class="container m-0 p-0 d-flex" style="color: #012970;">
+        <h4>Knowledge Base Form</h4>
+        <img class="text-primary" src="assets/images/KnowledgeBases.png" alt="" style="margin-left: 20px;" height="30"
+          width="30">
+      </div>
       <form class=" mt-3" onsubmit="return false" class="needs-validation" id="KBForm" novalidate>
         <div class="card-body">
           <div class="row">
@@ -384,18 +388,41 @@
     <script>
 
 
+      $(document).ready(function () {
+        //if id does'nt exist logout
+        if (!localStorage.getItem('agent_id')) {
+          window.location.href = "login.html";
+        } else {
+          let a_id = localStorage.getItem('agent_id');
+          $.ajax({
+            url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
+            method: 'GET',
+            dataType: "json",
+            success: function (data) {
+              // console.log(data);
+              $(".agent_name").text(data[0]['agent_name']);
+              $("#agent_role").text(data[0]['role']);
+              $("#agent_username").text(data[0]['username']);
+              $("#agent_id").text(data[0]['agent_id']);
+              $("#agent_mob").text(data[0]['mobile_number']);
+              $("#agent_status").text(data[0]['status']);
+              localStorage.removeItem('token_type');
 
+            }
+          });
+        }
+      })
 
 
       $(document).ready(function () {
         // $('#example').DataTable();
         let table = $('#example').DataTable();
 
-        $('#example tbody').on('click', 'tr', function(){
+        $('#example tbody').on('click', 'tr', function () {
           let rowData = table.row(this).data();
           console.log(rowData[0]);
           PullToForm(rowData[0]);
-          $('html, body').animate({ scrollTop: 0}, 'smooth');
+          $('html, body').animate({ scrollTop: 0 }, 'smooth');
         })
       });
       $(document).ready(function () {
