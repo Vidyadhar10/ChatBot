@@ -36,6 +36,13 @@
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
     <script src="WebSoc.js"></script>
 
+
+    <!-- CDN for Sweet alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+
 </head>
 
 <body onload="checkpagetype()">
@@ -140,215 +147,179 @@
     <main id="main" class="main" style="padding-bottom:0; margin-top: 55px; margin-bottom: 0;">
 
 
-        <div class="container m-0 p-0">
-            <div class="row">
-                <div class="col-lg-9 col-sm-12 card" style="padding-bottom: 0px; margin-bottom:0px; ">
-                    <div class="chat-area">
+        <!-- <div class="container m-0 p-0"> -->
+        <div class="row">
+            <div class="col-lg-9 col-sm-12 card" style="padding-bottom: 0px; margin-bottom:0px; ">
+                <div class="chat-area">
 
-                        <!-- chatlist starts -->
-                        <div class="chatlist">
-                            <div class="modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="chat-header">
-                                        <div class="msg-search m-2 mb-0 ml-3">
-                                            <input type="text" class="form-control" id="inlineFormInputGroup"
-                                                placeholder="Search" aria-label="search">
-                                        </div>
-
-
+                    <!-- chatlist starts -->
+                    <div class="chatlist">
+                        <div class="modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="chat-header">
+                                    <div class="msg-search m-2 mb-0 ml-3">
+                                        <input type="text" class="form-control" id="inlineFormInputGroup"
+                                            placeholder="Search" aria-label="search">
                                     </div>
 
-                                    <div class="modal-body">
-                                        <!-- chat-list -->
-                                        <div class="chat-lists">
-                                            <div class="tab-content" id="myTabContent">
 
-                                                <!-- chat-list -->
-                                                <div class="chat-list m-2 " id="chat_list">
-
-                                                </div>
-                                                <!-- chat-list -->
-
-                                            </div>
-
-                                        </div>
-                                        <!-- chat-list -->
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- chatlist ends -->
 
+                                <div class="modal-body">
+                                    <!-- chat-list -->
+                                    <div class="chat-lists">
+                                        <div class="tab-content" id="myTabContent">
 
+                                            <!-- chat-list -->
+                                            <div class="chat-list m-2 " id="chat_list">
 
-                        <!-- chatbox -->
-                        <div class="chatbox ">
-                            <div class="modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="msg-head">
-                                        <div class="row">
-                                            <div class="col-lg-8 col-sm-12">
-                                                <div class="d-flex align-items-center">
-                                                    <span class="chat-icon"><img class="img-fluid"
-                                                            src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
-                                                            alt="image title"></span>
-                                                    <div class="flex-shrink-0">
-                                                        <img class="img-fluid"
-                                                            src="https://mehedihtml.com/chatbox/assets/img/user.png"
-                                                            alt="user img">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h3>Mehedi Hasan</h3>
-                                                        <p>front end developer</p>
-                                                    </div>
-                                                </div>
                                             </div>
+                                            <!-- chat-list -->
 
                                         </div>
-                                    </div>
-
-
-                                    <div class="modal-body">
-                                        <div class="msg-body" id="ChattingBody">
-                                            <ul id="ChatList">
-                                                <li class="sender" id="sender">
-                                                    <p> Hey, Are you there? </p>
-                                                    <span class="time">10:06 am</span>
-                                                </li>
-
-                                                <li class="repaly" id="reciver">
-                                                    <p>yes!</p>
-                                                    <span class="time">10:20 am</span>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        // get the chat body element
-                                        var chatBody = document.getElementById('ChattingBody');
-
-                                        // get the last message in the chat body
-                                        var lastMessage = chatBody.querySelector('ul');
-
-                                        // set the scrollTop property to the maximum value
-                                        chatBody.scrollTop = chatBody.scrollHeight;
-
-                                        // scroll the last message into view
-                                        // lastMessage.scrollIntoView();
-
-                                        // scroll the last message into view at the bottom of the chat body
-                                        lastMessage.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
-
-                                    </script>
-
-                                    <div class="send-box">
-                                        <form action="" onsubmit="sendMessage(event)">
-                                            <input type="text" id="UserInputBox" class="form-control"
-                                                aria-label="message…" placeholder="Write message…">
-
-                                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                                Send</button>
-                                        </form>
-
-
 
                                     </div>
+                                    <!-- chat-list -->
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- chatlist ends -->
+
+
+
                     <!-- chatbox -->
+                    <div class="chatbox ">
+                        <div class="modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="msg-head">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-sm-12">
+                                            <div class="d-flex align-items-center">
+                                                <span class="chat-icon"><img class="img-fluid"
+                                                        src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg"
+                                                        alt="image title"></span>
+                                                <div class="flex-shrink-0">
+                                                    <img class="img-fluid"
+                                                        src="https://mehedihtml.com/chatbox/assets/img/user.png"
+                                                        alt="user img">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h3>Mehedi Hasan</h3>
+                                                    <p>front end developer</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-body" id="ChatBoxNew" style="overflow: auto;">
+                                    <div class="msg-body" id="ChattingBody">
+                                        <ul id="ChatList">
+                                            <li class="sender" id="sender">
+                                                <p> Hey, Are you there? </p>
+                                                <span class="time">10:06 am</span>
+                                            </li>
+
+                                            <li class="repaly" id="reciver">
+                                                <p>yes!</p>
+                                                <span class="time">10:20 am</span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="send-box">
+                                    <form action="" onsubmit="sendMessage(event)">
+                                        <input type="text" id="UserInputBox" class="form-control" aria-label="message…"
+                                            placeholder="Write message…">
+
+                                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                            Send</button>
+                                    </form>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- chatbox -->
+
+
+            </div>
+            <div class="col-lg-3 col-sm-12 m-0">
+                <div class="card pt-2" style="border: none;">
+
+                    <div class="row" style="font-size: 14px;">
+                        <div class="col">
+                            <ul style="list-style: none;">
+                                <li>Token No. :</li>
+                                <li>Token Status :</li>
+                                <li>created date :</li>
+                                <li>created Time :</li>
+                                <li>Priority :</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul style="list-style: none;">
+                                <li id="ticketNo">--</li>
+                                <li id="ticketStatus">--</li>
+                                <li id="createdDate">--</li>
+                                <li id="createdTime">--</li>
+                                <li id="priority">--</li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card " style="border: none;">
+
+
+                    <div class="input-group">
+                        <input class="form-control border-end-0 border rounded-pill m-2" type="search"
+                            placeholder="search for answer" id="example-search-input">
+                        <span class="input-group-append ">
+                            <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill m-2 "
+                                type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </span>
+                    </div>
 
 
                 </div>
-                <div class="col-lg-3 col-sm-12 m-0">
-                    <div class="card pt-2" style="border: none;">
+                <div class="card">
+                    <div class="row">
+                        <!-- <div class="col-12"> -->
+                        <lable class="col align-self-center ml-2">Change Status</lable>
+                        <select class="col form-control my-1 mr-3" id="status_data" onchange="changeStatus(this)">
 
-                        <div class="row" style="font-size: 14px;">
-                            <div class="col">
-                                <ul style="list-style: none;">
-                                    <li>Token Number :</li>
-                                    <li>Token Status :</li>
-                                    <li>created date :</li>
-                                    <li>created Time :</li>
-                                    <li>Priority :</li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul style="list-style: none;">
-                                    <li id="ticketNo">1234</li>
-                                    <li id="ticketStatus">open</li>
-                                    <li id="createdDate">23/03/2023</li>
-                                    <li id="createdTime"></li>
-                                    <li id="priority">High</li>
-
-                                </ul>
-                            </div>
-                        </div>
-
+                            <option value="">choose...</option>
+                            <option value="open">Open</option>
+                            <option value="live">Live</option>
+                            <option value="hold">On Hold</option>
+                            <option value="close">Close</option>
+                        </select>
+                        <!-- </div> -->
                     </div>
-                    <div class="card " style="border: none;">
+                </div>
+                <div class="card">
 
-
-                        <div class="input-group">
-                            <input class="form-control border-end-0 border rounded-pill m-2" type="search"
-                                placeholder="search for answer" id="example-search-input">
-                            <span class="input-group-append ">
-                                <button
-                                    class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill m-2 "
-                                    type="button">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </span>
-                        </div>
-
-
+                    <div class="row">
+                        <lable class="col align-self-center ml-2">Transfer ticket</lable>
+                        <select class="col form-control my-1 mr-3" id="transfer_ticket_dropdown" disabled>
+                            <option selected>Choose...</option>
+                        </select>
                     </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-12">
-                                <select class="form-control" id="status_data" onchange="changeStatus(this)">
-                                    <option value="open">Open</option>
-                                    <option value="live">Live</option>
-                                    <option value="hold">On Hold</option>
-                                    <option value="close">Close</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-
-                        <div class="row">
-                            <lable class="col align-self-center m-2">Transfer ticket</lable>
-                            <select class="col form-control m-2" id="transfer_ticket_dropdown">
-                                <option selected>Choose...</option>
-                            </select>
-                        </div>
-                    </div>
-                    <script>
-                        $.ajax({
-                            url: "http://192.168.137.129:5000/chat_transfer/agent_list",
-                            type: "GET",
-                            dataType: "json",
-                            success: function (data) {
-                                var $select = $('#transfer_ticket_dropdown');
-                                for (let i of data) {
-                                    $select.append($('<option>', {
-                                        value: i.agent_name,
-                                        text: i.agent_name
-                                    }));
-                                }
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                console.log(textStatus, errorThrown);
-                            }
-                        });
-                    </script>
                 </div>
             </div>
         </div>
+        <!-- </div> -->
         </div>
 
 
@@ -372,32 +343,159 @@
     <script src="assets/js/main.js"></script>
     <!-- <script src="assets/js/chat.js"></script> -->
 
-    <script src="main_script.js"></script>
 
     <script>
         $(document).ready(function () {
+            var ajaxRequests = []; // create an array to store the AJAX requests
             //if id does'nt exist logout
             if (!localStorage.getItem('agent_id')) {
                 window.location.href = "login.html";
             } else {
-                let a_id = localStorage.getItem('agent_id');
-                $.ajax({
-                    url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
-                    method: 'GET',
-                    dataType: "json",
-                    success: function (data) {
-                        // console.log(data);
-                        $(".agent_name").text(data[0]['agent_name']);
-                        $("#agent_role").text(data[0]['role']);
-                        $("#agent_username").text(data[0]['username']);
-                        $("#agent_id").text(data[0]['agent_id']);
-                        $("#agent_mob").text(data[0]['mobile_number']);
-                        $("#agent_status").text(data[0]['status']);
-                        localStorage.removeItem('token_type');
+                if (localStorage.getItem('token_type')) {
+                    var token_type = localStorage.getItem('token_type');
+                    var agent_id = localStorage.getItem('agent_id');
 
-                    }
-                });
+                    ajaxRequests.push($.ajax({
+                        url: `http://192.168.137.129:5000/${token_type}chats/${agent_id}`,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            for (let i of data) {
+                                var username = i.user_name;
+                                var token_id = i.token_id;
+                                var imgUrl = "https://mehedihtml.com/chatbox/assets/img/user.png";
+
+                                // Create a new anchor tag with dynamic data
+                                var $newAnchorTag = $(`<a class="d-flex  align-items-center hov chat_name">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-fluid"
+                                            src="${imgUrl}"
+                                            alt="user img">
+                                        <!-- <span class="active"></span> -->
+                                    </div>
+                                    <div class="flex-grow-1 m-1">
+                                        <h3>${username}</h3>
+                                        <h3 style="font-size:12px" >${token_id}</h3>
+                                    </div>
+                                </a>`);
+
+                                // Add the new anchor tag to an existing element on the page
+                                $('#chat_list').append($newAnchorTag);
+
+                                $(document).on('click', '.chat_name', function () {
+                                    var getToken = $(this).find('h3:last').text();
+                                    getUserInfo(1, getToken); //here user id is static
+                                    $('#transfer_ticket_dropdown').removeAttr('disabled');
+                                    localStorage.setItem('CurrentToken', getToken);
+                                });
+                            }
+                            $.ajax({
+                                url: "http://192.168.137.129:5000/chat_transfer/agent_list",
+                                type: "GET",
+                                dataType: "json",
+
+                                success: function (data) {
+                                    var $select = $('#transfer_ticket_dropdown');
+                                    for (let i of data) {
+                                        $select.append($('<option>', {
+                                            value: i.agent_id,
+                                            text: i.agent_name,
+                                        }));
+                                    }
+                                    $select.on('change', function () {
+                                        var new_agent_id = $(this).val();
+                                        var new_agent_Name = $(this).text();
+                                        var currToken = localStorage.getItem('CurrentToken');
+                                        Swal.fire({
+                                            title: 'Are you sure?',
+                                            text: `would you like to transfer this ticket to ${new_agent_Name} ?`,
+                                            icon: 'question',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            height: "300",
+                                            width: "300",
+                                            cancelButtonText: 'No',
+                                            confirmButtonText: 'Yes, Sure !',
+                                            showClass: {
+                                                popup: 'animate__animated animate__fadeInDown'
+                                            },
+                                            hideClass: {
+                                                popup: 'animate__animated animate__fadeOutUp'
+                                            }
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                transfer_chat(agent_id, new_agent_id, currToken);
+
+                                            }
+                                        })
+                                    });
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus, errorThrown);
+                                },
+                            });
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        },
+                        complete: function () {
+                            // close the connection
+                            ajaxRequests.pop().abort();
+                        }
+                    }))
+
+                } else {
+                    localStorage.removeItem('token_type');
+                }
             }
+        });
+
+        function getUserInfo(user_id, tokenId) {
+
+            $.ajax({
+                url: `http://192.168.137.129:5000/get_user_info/${user_id}/${tokenId}`,
+                type: "GET",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    $("#ticketNo").text(data[0]['token_id']);
+                    $("#ticketStatus").text(data[0]['token_status']);
+                    let createddatetime = data[0]['ticket_created_Time'];
+                    let date = createddatetime.substring(0, 10);
+                    let time = createddatetime.substring(11,)
+                    $("#createdDate").text(date);
+                    $("#createdTime").text(time);
+                    $("#priority").text(data[0]['priority']);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+
+
+        function transfer_chat(agent_id, new_agent_id, currToken) {
+            $.ajax({
+                url: `http://192.168.137.129:5000/transfer_token/${currToken}/${new_agent_id}/${agent_id}`,
+                type: 'GET',
+                async: false,
+                dataType: "JSON",
+                success: function (data) {
+                    console.log(data);
+                },
+                complete: function () {
+                    Swal.fire(
+                        'Transfered !',
+                        'ticket transfered successfully !',
+                        'success'
+                    )
+                }
+            })
+        }
+
+        $('.chat-icon').click(function () {
+            $('.chatbox').addClass('d-none')
         })
         //ticket status change functionality
         function changeStatus(ele) {
@@ -405,6 +503,11 @@
             let ticketid = $('#ticketNo').text();
             console.log(ele.value);
             alert(ticketid);
+
+            // if (xhr) {
+            //     xhr.abort();
+            // }
+
             if (ele.value == 'open') {
                 $.ajax({
                     url: `http://192.168.137.129:5000/update_open/${ticketid}`,
@@ -433,8 +536,14 @@
                 })
             }
         }
+
+
+// Chat .html page script END
+
     </script>
     <!-- <script src="assets/js/chat_transfer.js"></script> -->
+    <script src="main_script.js"></script>
+
 
 </body>
 

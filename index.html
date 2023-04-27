@@ -197,7 +197,9 @@
                         <i class="bi bi-folder2-open"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="open_tickets_count">NaN</h6>
+                        <h6 id="open_tickets_count">
+                          <img class="img-fluid loader-gif" width="50" src="assets/images/loader.gif" alt="--">
+                        </h6>
 
                       </div>
                     </div>
@@ -232,7 +234,10 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="live_tickets_count">NaN</h6>
+                        <h6 id="live_tickets_count">
+                          <img class="img-fluid loader-gif" width="50" src="assets/images/loader.gif" alt="--">
+
+                        </h6>
 
                       </div>
                     </div>
@@ -262,7 +267,7 @@
                   </ul> -->
                 </div>
 
-                <a onclick="cardtype('Close')">
+                <a id="close">
                   <div class="card-body">
                     <h5 class="card-title">Closed Tokens </h5>
                     <div class="d-flex align-items-center">
@@ -270,7 +275,10 @@
                         <i class="bi bi-person-check-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="closed_tickets_count">NaN</h6>
+                        <h6 id="closed_tickets_count">
+                          <img class="img-fluid loader-gif" width="50" src="assets/images/loader.gif" alt="--">
+
+                        </h6>
                       </div>
                     </div>
 
@@ -308,7 +316,10 @@
                         <i class="bi bi-person-exclamation"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 id="hold_tickets_count">NaN</h6>
+                        <h6 id="hold_tickets_count">
+                          <img class="img-fluid loader-gif" width="50" src="assets/images/loader.gif" alt="--">
+
+                        </h6>
                       </div>
                     </div>
 
@@ -356,48 +367,61 @@
         window.location.href = "login.html";
       }
 
-      if (localStorage.getItem('agent_id')) {
-
+      else {
         let a_id = localStorage.getItem('agent_id');
-        $.ajax({
+        var ajaxRequests = []; // create an array to store the AJAX requests
+
+        // make the first AJAX request to fetch dashboard data
+        ajaxRequests.push($.ajax({
           url: `http://192.168.137.129:5000/agent/dashboard/${a_id}`,
           type: "GET",
           dataType: "json",
+          beforeSend: function () {
+            $('.loader-gif').removeClass('d-none');
+          },
+          complete: function () {
+            $('.loader-gif').addClass('d-none');
+          },
           success: function (data) {
-            console.log(data);
+            // console.log(data);
             $("#open_tickets_count").text(data['open_token']);
             $("#live_tickets_count").text(data['live_token']);
             $("#closed_tickets_count").text(data['close_token']);
             $("#hold_tickets_count").text(data['hold_token']);
 
-            // User details
-            $.ajax({
-              url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
-              method: 'GET',
-              dataType: "json",
-              success: function (data) {
-                // console.log(data);
-                $(".agent_name").text(data[0]['agent_name']);
-                $("#agent_role").text(data[0]['role']);
-                $("#agent_username").text(data[0]['username']);
-                $("#agent_id").text(data[0]['agent_id']);
-                $("#agent_mob").text(data[0]['mobile_number']);
-                $("#agent_status").text(data[0]['status']);
-                localStorage.removeItem('token_type');
 
-              }
-            });
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
+          },
+          complete: function () {
+            // close the connection
+            ajaxRequests.pop().abort();
           }
-        });
+        }));
       }
+
+
       localStorage.removeItem('token_type');
 
     })
-
-
+    // dashboard cards redirections
+    $('#open').click(function () {
+      localStorage.setItem('token_type', 'open');
+      window.location.href = `chat.html`;                //redirect
+    })
+    $('#close').click(function () {
+      localStorage.setItem('token_type', 'close');
+      window.location.href = `chat.html`;
+    })
+    $('#live').click(function () {
+      localStorage.setItem('token_type', 'live');
+      window.location.href = `chat.html`;
+    })
+    $('#on_hold').click(function () {
+      localStorage.setItem('token_type', 'onhold');
+      window.location.href = `chat.html`;
+    })
   </script>
 
   <!-- <script src="assets/js/dashboard.js"></script> -->

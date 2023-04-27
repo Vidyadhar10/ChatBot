@@ -848,7 +848,8 @@ message-area
   background-color: #fff;
   border-radius: 0.3rem;
 
-  min-height: 87vh
+  min-height: 87vh;
+
 }
 
 .chatlist {
@@ -1361,10 +1362,11 @@ button:focus {
     width: 100%;
   }
 
+
   .chatbox {
     width: 100%;
+    /* display: none; */
     position: absolute;
-    left: 1000px;
     right: 0;
     background: #fff;
     transition: all 0.5s ease;

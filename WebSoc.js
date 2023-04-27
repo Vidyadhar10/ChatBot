@@ -2,19 +2,21 @@
 
 var Token_id = localStorage.getItem('Token_Generated');
 var u_id = localStorage.getItem('User_ID');
-var ws = new WebSocket(`ws://192.168.137.166:5000/chat/0010027/a_1`);
+var ws = new WebSocket(`ws://192.168.137.129:5000/chat/0010027/u_1`);
 // var ws = new WebSocket(`ws://192.168.137.166:5000/chat/00100228/u_1`);
 
 
 ws.onmessage = function (event) {
     var msg = event.data.match(/message:(.*)at/)[1].trim();
     var msgFrom = event.data.match(/user #(.*)_/)[1].trim();
-    if(msgFrom == 'u'){
+    if (msgFrom == 'a') {
         $.ajax({
             url: 'sent-msg.html',
             success: function (html) {
                 var modifiedHtml = html.replace('[TypedMessage]', msg);
                 $('#ChatList').append(modifiedHtml);
+                var chatBody = document.getElementById('ChatBoxNew');
+                chatBody.scrollTop = chatBody.scrollHeight;
             }
         })
     } else {
@@ -23,22 +25,27 @@ ws.onmessage = function (event) {
             success: function (html) {
                 var modifiedHtml = html.replace('[Received Msg]', msg);
                 $('#ChatList').append(modifiedHtml);
+                var chatBody = document.getElementById('ChatBoxNew');
+                chatBody.scrollTop = chatBody.scrollHeight;
             }
         })
     }
-    
+
 };
 
 
 function sendMessage(event) {
     var inputValue = $('#UserInputBox').val();
-    ws.send(inputValue);
+    if (inputValue.trim() != "") {
+        $('#UserInputBox').focus();
+        ws.send(inputValue);
+    }
     $('#UserInputBox').val('');
     event.preventDefault();
 }
 
 
-let socket = new WebSocket(`ws://192.168.137.166:5000/chat/0010027/a_1`);
+let socket = new WebSocket(`ws://192.168.137.129:5000/chat/0010027/a_1`);
 
 // socket.onopen = function (e) {
 //     alert("[open] Connection established");
@@ -47,7 +54,7 @@ let socket = new WebSocket(`ws://192.168.137.166:5000/chat/0010027/a_1`);
 // };
 
 socket.onmessage = function (event) {
-    alert(`[message] Data received from server: ${event.data}`);
+    // alert(`[message] Data received from server: ${event.data}`);
 };
 
 socket.onclose = function (event) {
