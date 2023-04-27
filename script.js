@@ -1,20 +1,6 @@
-$.ajax({
-    url: 'http://192.168.137.129:5000/show_database',
-    type: 'GET',
-    dataType: "json",
-    success: function (data) {
-        $.each(data, function (index, item) {
-            $('#KnowledgeBaseTable').append($('<tr>')
-                .append($('<td>').attr('class', 'd-none').text(item.id))
-                .append($('<td>').text(item.department))
-                .append($('<td>').text(item.section))
-                .append($('<td>').text(item.problem))
-                .append($('<td>').text(item.tag))
-                .append($('<td>').html(item.answer))
-                .append($('<td>').append($('<a>').attr('href', item.link).attr('target', 'blank').text(item.link))));
-        });
-    }
-});
+
+
+
 
 function InsertintoDatabase() {
     var ckValue = CKEDITOR.instances["myeditor"].getData();
@@ -39,11 +25,12 @@ function InsertintoDatabase() {
                 success: function (data) {
                     $.each(data, function (index, item) {
                         $('#KnowledgeBaseTable').append($('<tr>')
+                            .append($('<td>').attr('class', 'd-none').text(item.id))
                             .append($('<td>').text(item.department))
                             .append($('<td>').text(item.section))
-                            .append($('<td>').append($('<a>').attr('href', '#').attr('onclick', 'PullToForm(' + item.id + ')').text(item.problem)))
+                            .append($('<td>').text(item.problem))
                             .append($('<td>').text(item.tag))
-                            .append($('<td>').text(item.answer))
+                            .append($('<td>').html(item.answer))
                             .append($('<td>').append($('<a>').attr('href', item.link).attr('target', 'blank').text(item.link))));
                     });
                 }
@@ -59,7 +46,7 @@ function UpdateData() {
     var ckValue = CKEDITOR.instances["myeditor"].getData();
 
     $.ajax({
-        url: 'http://192.168.137.129:5000/update_database/' + id,
+        url: `http://192.168.137.129:5000/update_database/${id}`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -79,11 +66,12 @@ function UpdateData() {
                 success: function (data) {
                     $.each(data, function (index, item) {
                         $('#KnowledgeBaseTable').append($('<tr>')
+                            .append($('<td>').attr('class', 'd-none').text(item.id))
                             .append($('<td>').text(item.department))
                             .append($('<td>').text(item.section))
-                            .append($('<td>').append($('<a>').attr('href', '#').attr('onclick', 'PullToForm(' + item.id + ')').text(item.problem)))
+                            .append($('<td>').text(item.problem))
                             .append($('<td>').text(item.tag))
-                            .append($('<td>').text(item.answer))
+                            .append($('<td>').html(item.answer))
                             .append($('<td>').append($('<a>').attr('href', item.link).attr('target', 'blank').text(item.link))));
                     });
                     $('#KBForm').trigger('reset');

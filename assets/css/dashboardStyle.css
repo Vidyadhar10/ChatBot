@@ -1364,7 +1364,7 @@ button:focus {
   .chatbox {
     width: 100%;
     position: absolute;
-    left: 1000px;
+    /* left: 1000px; */
     right: 0;
     background: #fff;
     transition: all 0.5s ease;

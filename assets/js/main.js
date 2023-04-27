@@ -5,7 +5,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -42,7 +42,7 @@
    * Sidebar toggle
    */
   if (select('.toggle-sidebar-btn')) {
-    on('click', '.toggle-sidebar-btn', function(e) {
+    on('click', '.toggle-sidebar-btn', function (e) {
       select('body').classList.toggle('toggle-sidebar')
     })
   }
@@ -51,7 +51,7 @@
    * Search bar toggle
    */
   if (select('.search-bar-toggle')) {
-    on('click', '.search-bar-toggle', function(e) {
+    on('click', '.search-bar-toggle', function (e) {
       select('.search-bar').classList.toggle('search-bar-show')
     })
   }
@@ -112,7 +112,7 @@
    * Initiate tooltips
    */
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 
@@ -142,31 +142,31 @@
           }],
           ["bold", "italic", "underline", "strike"],
           [{
-              color: []
-            },
-            {
-              background: []
-            }
+            color: []
+          },
+          {
+            background: []
+          }
           ],
           [{
-              script: "super"
-            },
-            {
-              script: "sub"
-            }
+            script: "super"
+          },
+          {
+            script: "sub"
+          }
           ],
           [{
-              list: "ordered"
-            },
-            {
-              list: "bullet"
-            },
-            {
-              indent: "-1"
-            },
-            {
-              indent: "+1"
-            }
+            list: "ordered"
+          },
+          {
+            list: "bullet"
+          },
+          {
+            indent: "-1"
+          },
+          {
+            indent: "+1"
+          }
           ],
           ["direction", {
             align: []
@@ -200,31 +200,31 @@
     autosave_retention: '2m',
     image_advtab: true,
     link_list: [{
-        title: 'My page 1',
-        value: 'https://www.tiny.cloud'
-      },
-      {
-        title: 'My page 2',
-        value: 'http://www.moxiecode.com'
-      }
+      title: 'My page 1',
+      value: 'https://www.tiny.cloud'
+    },
+    {
+      title: 'My page 2',
+      value: 'http://www.moxiecode.com'
+    }
     ],
     image_list: [{
-        title: 'My page 1',
-        value: 'https://www.tiny.cloud'
-      },
-      {
-        title: 'My page 2',
-        value: 'http://www.moxiecode.com'
-      }
+      title: 'My page 1',
+      value: 'https://www.tiny.cloud'
+    },
+    {
+      title: 'My page 2',
+      value: 'http://www.moxiecode.com'
+    }
     ],
     image_class_list: [{
-        title: 'None',
-        value: ''
-      },
-      {
-        title: 'Some class',
-        value: 'class-name'
-      }
+      title: 'None',
+      value: ''
+    },
+    {
+      title: 'Some class',
+      value: 'class-name'
+    }
     ],
     importcss_append: true,
     file_picker_callback: (callback, value, meta) => {
@@ -251,20 +251,20 @@
       }
     },
     templates: [{
-        title: 'New Table',
-        description: 'creates a new table',
-        content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
-      },
-      {
-        title: 'Starting my story',
-        description: 'A cure for writers block',
-        content: 'Once upon a time...'
-      },
-      {
-        title: 'New list with dates',
-        description: 'New List with dates',
-        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
-      }
+      title: 'New Table',
+      description: 'creates a new table',
+      content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
+    },
+    {
+      title: 'Starting my story',
+      description: 'A cure for writers block',
+      content: 'Once upon a time...'
+    },
+    {
+      title: 'New list with dates',
+      description: 'New List with dates',
+      content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
+    }
     ],
     template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
     template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
@@ -285,8 +285,8 @@
   var needsValidation = document.querySelectorAll('.needs-validation')
 
   Array.prototype.slice.call(needsValidation)
-    .forEach(function(form) {
-      form.addEventListener('submit', function(event) {
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
@@ -310,7 +310,7 @@
   const mainContainer = select('#main');
   if (mainContainer) {
     setTimeout(() => {
-      new ResizeObserver(function() {
+      new ResizeObserver(function () {
         select('.echart', true).forEach(getEchart => {
           echarts.getInstanceByDom(getEchart).resize();
         })
@@ -321,139 +321,110 @@
 })();
 
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
-  $(".chat-list a").click(function() {
-      $(".chatbox").addClass('showbox');
-      return false;
+  $(".chat-list a").click(function () {
+    $(".chatbox").addClass('showbox');
+    return false;
   });
 
-  $(".chat-icon").click(function() {
-      $(".chatbox").removeClass('showbox');
+  $(".chat-icon").click(function () {
+    $(".chatbox").removeClass('showbox');
   });
 
 
 });
 
-function check_status(){
-if(document.getElementById('token_status').value=="Close"){
-  Swal.fire({
-    title: 'Do you want to close the token ?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Closed!',
-        'Your token has been closed.',
-        'success'
-      )
-    }
-  })
-}
-
-else if(document.getElementById('token_status').value=="Open"){
-  Swal.fire({
-    title: 'Do you want to open the token ?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Opened!',
-        'Your token has been Opened.',
-        'success'
-      )
-    }
-  })
-}
-
-else if(document.getElementById('token_status').value=="Hold"){
-  Swal.fire({
-    title: 'Do you want to hold the token ?',
-   
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Token on Hold!',
-        'Your token now on hold.',
-        'success'
-      )
-    }
-  })
-}
-
-
-
-}
-
-var state;
-function cardtype(state){
-
-  if(state=='Open'){
-      window.location.href='chat.html';
-      localStorage.setItem("type", "Open");
+function check_status() {
+  if (document.getElementById('token_status').value == "Close") {
+    Swal.fire({
+      title: 'Do you want to close the token ?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Closed!',
+          'Your token has been closed.',
+          'success'
+        )
+      }
+    })
   }
 
-else if(state=='Close'){
-  window.location.href='chat.html';
-      
-  localStorage.setItem("type", "Close");
+  else if (document.getElementById('token_status').value == "Open") {
+    Swal.fire({
+      title: 'Do you want to open the token ?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Opened!',
+          'Your token has been Opened.',
+          'success'
+        )
+      }
+    })
+  }
+
+  else if (document.getElementById('token_status').value == "Hold") {
+    Swal.fire({
+      title: 'Do you want to hold the token ?',
+
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Token on Hold!',
+          'Your token now on hold.',
+          'success'
+        )
+      }
+    })
+  }
+
+
 
 }
 
-else if(state=='live'){
-  window.location.href='chat.html';
-      
-  localStorage.setItem("type", "live");
 
-}
-
-else if(state='Hold'){
-  window.location.href='chat.html';
-      
-  localStorage.setItem("type", "Hold");
-}
-
-}
-
-function checkpagetype(){
-  let type=localStorage.getItem("type");
-  if(type=='Open'){
-    let select=document.getElementById('token_status');
-    select.innerHTML=`
+function checkpagetype() {
+  let type = localStorage.getItem("type");
+  if (type == 'Open') {
+    let select = document.getElementById('token_status');
+    select.innerHTML = `
     <option value="" selected>Open</option>
    
     <option value="Close">Close</option>
     <option value="Hold">Hold</option>`;
   }
 
-  else if(type=='Close'){
-    let select=document.getElementById('token_status');
-    select.innerHTML=`
+  else if (type == 'Close') {
+    let select = document.getElementById('token_status');
+    select.innerHTML = `
     <option value="">Close</option>
     `;
 
-    
+
   }
 
-  else if(type=='live'){
-    let select=document.getElementById('token_status');
-    
-    select.innerHTML=`
+  else if (type == 'live') {
+    let select = document.getElementById('token_status');
+
+    select.innerHTML = `
     <option value="" selected>Live</option>
     <option value="Open">Open</option>
     <option value="Close">Close</option>
@@ -461,14 +432,14 @@ function checkpagetype(){
     `;
   }
 
-  else if(type=='Hold'){
-    let select=document.getElementById('token_status');
-    select.innerHTML=`
+  else if (type == 'Hold') {
+    let select = document.getElementById('token_status');
+    select.innerHTML = `
     <option value="" selected>Hold</option>
     <option value="Open">Open</option>
     
     <option value="Close" >Close</option>
     `;
   }
-  
+
 }

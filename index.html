@@ -249,20 +249,7 @@
 
               <div class="card info-card customers-card">
 
-                <div class="filter">
-                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul> -->
-                </div>
-
-                <a onclick="cardtype('Close')">
+                <a id="close">
                   <div class="card-body">
                     <h5 class="card-title">Closed Tokens </h5>
                     <div class="d-flex align-items-center">
@@ -286,19 +273,6 @@
             <div class="col-xxl-3 col-">
 
               <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-  
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
                 <a id="on_hold">
                   <div class="card-body">
                     <h5 class="card-title"> On Hold Tokens </h5>
@@ -342,7 +316,6 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="sweetalert2.all.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
@@ -384,7 +357,6 @@
                 $("#agent_mob").text(data[0]['mobile_number']);
                 $("#agent_status").text(data[0]['status']);
                 localStorage.removeItem('token_type');
-
               }
             });
           },
@@ -393,6 +365,7 @@
           }
         });
       }
+      // jqXHR.abort();
       localStorage.removeItem('token_type');
 
     })

@@ -366,20 +366,53 @@
 
 
 
-      <table style="font-size:13px;" id="example" class="cell-border hover compact text-center" style=" width:100%;">
+      <table style="font-size:13px;" id="example" class="cell-border compact hover text-center" style="width:100%;">
         <thead>
           <tr class="mt-3  bg-dark-light">
+            <th class="text-center d-none">id</th>
             <th class="text-center">Department</th>
             <th class="text-center">Section</th>
             <th class="text-center">Problem</th>
             <th class="text-center">Tag</th>
             <th class="text-center">Solution</th>
-            <th class="text-center d-none">link</th>
             <th class="text-center">link</th>
           </tr>
         </thead>
         <tbody id="KnowledgeBaseTable">
+          <script>
+            $.ajax({
+              url: 'http://192.168.137.129:5000/show_database',
+              type: 'GET',
+              dataType: "json",
+              success: function (data) {
+                if (data.length > 0) {
+                  $.each(data, function (index, item) {
 
+                    if (item.answer.split(" ").length > 30) {
+                      var truncatedSolution = item.answer.split(" ").splice(0, 30).join(" ");
+                      truncatedSolution = truncatedSolution + '...';
+                    } else {
+                      var truncatedSolution = item.answer.split(" ").splice(0, 30).join(" ");
+                    }
+                    $('#KnowledgeBaseTable').append($('<tr>')
+                      .append($('<td>').attr('class', 'd-none').text(item.id))
+                      .append($('<td>').text(item.department))
+                      .append($('<td>').text(item.section))
+                      .append($('<td>').text(item.problem))
+                      .append($('<td>').text(item.tag))
+                      .append($('<td>').html(truncatedSolution))
+                      .append($('<td>').append($('<a>').attr('href', item.link).attr('target', '_blank').text(item.link))));
+                  });
+                } else {
+                  $('#KnowledgeBaseTable').append('<tr><td colspan="7">No data available</td></tr>');
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
+              }
+            });
+
+          </script>
         </tbody>
 
       </table>
@@ -415,21 +448,30 @@
 
 
       $(document).ready(function () {
-        // $('#example').DataTable();
+        $('#example').DataTable();
         let table = $('#example').DataTable();
 
         $('#example tbody').on('click', 'tr', function () {
           let rowData = table.row(this).data();
-          console.log(rowData[0]);
           PullToForm(rowData[0]);
           $('html, body').animate({ scrollTop: 0 }, 'smooth');
         })
-      });
-      $(document).ready(function () {
+
         $('.dataTables_filter input[type="search"]').css(
           { 'width': '100px', 'height': '30px', 'display': 'inline-block', 'margin-bottom': '10px', 'margin-top': '10px' }
         );
+        if (!$.fn.DataTable.isDataTable('#example')) {
+          $('#example').DataTable({
+            "language": {
+              "emptyTable": ""
+            }
+          });
+        }
+
+
       });
+
+
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -440,7 +482,7 @@
           height: 100,
 
           toolbarGroups: [
-            { name: 'group1', groups: ['clipboard', 'editing', 'links', 'insert', 'styles', 'tools', 'document', 'others'] }
+            { name: 'group1', groups: ['clipboard', 'basicstyles', 'editing', 'links', 'insert', 'styles', 'tools', 'document', 'others'] }
           ],
           removeButtons: 'Subscript,Superscript'
         });

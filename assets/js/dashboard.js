@@ -24,7 +24,7 @@ logoutBtn.addEventListener('click', function (e) {
 if (localStorage.getItem('agent_id') != "") {
 
     $(document).ready(function () {
-        
+
         var a_id = localStorage.getItem('agent_id');
         $.ajax({
             url: 'http://192.168.137.129:5000/agent/dashboard/' + a_id,
