@@ -1,5 +1,5 @@
 $.ajax({
-    url: 'http://192.168.137.129:5000/show_database',
+    url: 'http://192.168.43.155:5000/show_database',
     type: 'GET',
     dataType: "json",
     success: function (data) {
@@ -19,7 +19,7 @@ $.ajax({
 function InsertintoDatabase() {
     var ckValue = CKEDITOR.instances["myeditor"].getData();
     $.ajax({
-        url: 'http://192.168.137.129:5000/insert_database/',
+        url: 'http://192.168.43.155:5000/insert_database/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -33,7 +33,7 @@ function InsertintoDatabase() {
         success: function (data) {
 
             $.ajax({
-                url: 'http://192.168.137.129:5000/show_database',
+                url: 'http://192.168.43.155:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -59,7 +59,7 @@ function UpdateData() {
     var ckValue = CKEDITOR.instances["myeditor"].getData();
 
     $.ajax({
-        url: 'http://192.168.137.129:5000/update_database/' + id,
+        url: 'http://192.168.43.155:5000/update_database/' + id,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -73,7 +73,7 @@ function UpdateData() {
         complete: function () {
 
             $.ajax({
-                url: 'http://192.168.137.129:5000/show_database',
+                url: 'http://192.168.43.155:5000/show_database',
                 type: 'GET',
                 dataType: "json",
                 success: function (data) {
@@ -104,7 +104,7 @@ function PullToForm(id) {
     $('#UpdateBtn').removeClass('d-none');
     localStorage.setItem('UpdateValueID', id);
     $.ajax({
-        url: 'http://192.168.137.129:5000/pull_database/' + id,
+        url: 'http://192.168.43.155:5000/pull_database/' + id,
         type: 'GET',
         dataType: "json",
         success: function (data) {

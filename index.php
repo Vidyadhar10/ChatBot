@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +53,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/images/logo.png" alt="">
         <span class="d-none d-lg-block">Support</span>
       </a>
@@ -69,7 +70,7 @@
       <ul class="d-flex align-items-center">
         <nav class="m-3 breadcrumbItems">
           <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
           </ol>
         </nav>
@@ -112,8 +113,8 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right "></i><span id="logout">Sign Out</span>
+              <a class="dropdown-item d-flex align-items-center" id="logout">
+                <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
               </a>
             </li>
 
@@ -131,7 +132,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="index.php">
           <i class="bi bi-grid"></i><span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
@@ -159,7 +160,7 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
@@ -213,18 +214,6 @@
             <div class="col-xxl-3 col-md-6">
               <div class="card info-card revenue-card">
 
-                <div class="filter">
-                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul> -->
-                </div>
                 <a id="live">
                   <div class="card-body">
                     <h5 class="card-title">Live Interactions</h5>
@@ -254,18 +243,6 @@
 
               <div class="card info-card customers-card">
 
-                <div class="filter">
-                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul> -->
-                </div>
 
                 <a id="close">
                   <div class="card-body">
@@ -295,18 +272,6 @@
 
               <div class="card info-card customers-card">
 
-                <div class="filter">
-                  <!--<a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-  
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
                 <a id="on_hold">
                   <div class="card-body">
                     <h5 class="card-title"> On Hold Tokens </h5>
@@ -357,23 +322,22 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script src="main_script.js"></script>
   <script>
     //Dashboard Counts
     $(document).ready(function () {
 
       //if id does'nt exist => logout
-      if (!localStorage.getItem('agent_id')) {
+      if (!(<?php echo $_SESSION['agent_id'] ?>)) {
         window.location.href = "login.html";
       }
 
       else {
-        let a_id = localStorage.getItem('agent_id');
+        let a_id = <?php echo $_SESSION['agent_id'] ?>;
         var ajaxRequests = []; // create an array to store the AJAX requests
 
         // make the first AJAX request to fetch dashboard data
         ajaxRequests.push($.ajax({
-          url: `http://192.168.137.129:5000/agent/dashboard/${a_id}`,
+          url: `http://192.168.43.155:5000/agent/dashboard/${a_id}`,
           type: "GET",
           dataType: "json",
           beforeSend: function () {
@@ -389,43 +353,54 @@
             $("#closed_tickets_count").text(data['close_token']);
             $("#hold_tickets_count").text(data['hold_token']);
 
-
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
           },
           complete: function () {
-            // close the connection
             ajaxRequests.pop().abort();
           }
         }));
       }
 
-
-      localStorage.removeItem('token_type');
-
     })
     // dashboard cards redirections
     $('#open').click(function () {
-      localStorage.setItem('token_type', 'open');
-      window.location.href = `chat.html`;                //redirect
+      setCardNameInSession('open');
+      window.location.href = `chat.php`;
     })
     $('#close').click(function () {
-      localStorage.setItem('token_type', 'close');
-      window.location.href = `chat.html`;
+      // localStorage.setItem('token_type', 'close');
+      setCardNameInSession('close');
+      window.location.href = `chat.php`;
     })
     $('#live').click(function () {
-      localStorage.setItem('token_type', 'live');
-      window.location.href = `chat.html`;
+      // localStorage.setItem('token_type', 'live');
+      setCardNameInSession('live');
+      window.location.href = `chat.php`;
     })
     $('#on_hold').click(function () {
-      localStorage.setItem('token_type', 'onhold');
-      window.location.href = `chat.html`;
+      // localStorage.setItem('token_type', 'onhold');
+      setCardNameInSession('onhold');
+      window.location.href = `chat.php`;
     })
+
+    function setCardNameInSession(state) {
+      console.log(state);
+      $.ajax({
+        url: 'session.php',
+        method: 'POST',
+        data: { token_type: state },
+        success: function (response) {
+          console.log(response); // handle success
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log(textStatus, errorThrown); // handle error
+        }
+      });
+    }
   </script>
-
-  <!-- <script src="assets/js/dashboard.js"></script> -->
-
+  <script src="main_script.js"></script>
 </body>
 
 </html>

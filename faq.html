@@ -136,7 +136,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
+              <a class="dropdown-item d-flex align-items-center" id="logout">
                 <i class="bi bi-box-arrow-right"></i><span>Sign Out</span>
               </a>
             </li>
@@ -155,7 +155,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-grid"></i><span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
@@ -388,31 +388,6 @@
     <script>
 
 
-      $(document).ready(function () {
-        //if id does'nt exist logout
-        if (!localStorage.getItem('agent_id')) {
-          window.location.href = "login.html";
-        } else {
-          let a_id = localStorage.getItem('agent_id');
-          $.ajax({
-            url: `http://192.168.137.129:5000/get_agent_info/${a_id}`,
-            method: 'GET',
-            dataType: "json",
-            success: function (data) {
-              // console.log(data);
-              $(".agent_name").text(data[0]['agent_name']);
-              $("#agent_role").text(data[0]['role']);
-              $("#agent_username").text(data[0]['username']);
-              $("#agent_id").text(data[0]['agent_id']);
-              $("#agent_mob").text(data[0]['mobile_number']);
-              $("#agent_status").text(data[0]['status']);
-              localStorage.removeItem('token_type');
-
-            }
-          });
-        }
-      })
-
 
       $(document).ready(function () {
         // $('#example').DataTable();
@@ -473,6 +448,7 @@
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="main_script.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +32,11 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="WebSoc.js"></script> -->
 
 
     <!-- Template Main CSS File -->
     <link href="assets/css/dashboardStyle.css" rel="stylesheet">
-    <script src="WebSoc.js"></script>
 
 
     <!-- CDN for Sweet alert  -->
@@ -51,7 +53,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/images/logo.png" alt="">
                 <span class="d-none d-lg-block ml-2">Support</span>
             </a>
@@ -82,13 +84,6 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        <!-- <li class="dropdown-item-text">
-                    <p> Username : Yash123</p>
-                    <p > Agent_id : TT104 </p>
-                    <p > Mobile No : 9857461230 </p>
-                    <p > Status : 1 </p>
-                  </li> -->
-
                         <li class="d-flex">
                             <div class="m-2 p-1">
                                 <p>Username :</p>
@@ -109,7 +104,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" id="logout">
                                 <i class="bi bi-box-arrow-right "></i><span>Sign Out</span>
                             </a>
                         </li>
@@ -128,7 +123,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed " href="index.html">
+                <a class="nav-link collapsed " href="index.php">
                     <i class="bi bi-grid"></i><span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
@@ -205,8 +200,8 @@
                                                         alt="user img">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
-                                                    <h3>Mehedi Hasan</h3>
-                                                    <p>front end developer</p>
+                                                    <h3 id="selectedChat">--</h3>
+                                                    <p id="selectedToken">--</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,16 +212,10 @@
 
                                 <div class="modal-body" id="ChatBoxNew" style="overflow: auto;">
                                     <div class="msg-body" id="ChattingBody">
+                                        <h5 class="m-5 pl-5 text-secondary" id="blankWindowMsg">Click on the chat to
+                                            start the conversation
+                                        </h5>
                                         <ul id="ChatList">
-                                            <li class="sender" id="sender">
-                                                <p> Hey, Are you there? </p>
-                                                <span class="time">10:06 am</span>
-                                            </li>
-
-                                            <li class="repaly" id="reciver">
-                                                <p>yes!</p>
-                                                <span class="time">10:20 am</span>
-                                            </li>
 
                                         </ul>
                                     </div>
@@ -236,7 +225,8 @@
                                         <input type="text" id="UserInputBox" class="form-control" aria-label="message…"
                                             placeholder="Write message…">
 
-                                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                        <button type="submit" id="SendButton"><i class="fa fa-paper-plane"
+                                                aria-hidden="true"></i>
                                             Send</button>
                                     </form>
 
@@ -259,8 +249,8 @@
                             <ul style="list-style: none;">
                                 <li>Token No. :</li>
                                 <li>Token Status :</li>
-                                <li>created date :</li>
-                                <li>created Time :</li>
+                                <li>Created date :</li>
+                                <li>Created Time :</li>
                                 <li>Priority :</li>
                             </ul>
                         </div>
@@ -297,13 +287,9 @@
                     <div class="row">
                         <!-- <div class="col-12"> -->
                         <lable class="col align-self-center ml-2">Change Status</lable>
-                        <select class="col form-control my-1 mr-3" id="status_data" onchange="changeStatus(this)">
+                        <select class="col form-control my-1 mr-3" id="status_data" disabled
+                            onchange="changeStatus(this)">
 
-                            <option value="">choose...</option>
-                            <option value="open">Open</option>
-                            <option value="live">Live</option>
-                            <option value="hold">On Hold</option>
-                            <option value="close">Close</option>
                         </select>
                         <!-- </div> -->
                     </div>
@@ -338,6 +324,7 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="WebSoc.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
@@ -345,24 +332,27 @@
 
 
     <script>
+
         $(document).ready(function () {
             var ajaxRequests = []; // create an array to store the AJAX requests
             //if id does'nt exist logout
-            if (!localStorage.getItem('agent_id')) {
-                window.location.href = "login.html";
+            if (!(<?php echo $_SESSION['agent_id'] ?>)) {
+                window.location.href = "login.php";
             } else {
-                if (localStorage.getItem('token_type')) {
-                    var token_type = localStorage.getItem('token_type');
-                    var agent_id = localStorage.getItem('agent_id');
+                if ('<?php echo $_SESSION['token_type'] ?>') {
+
+                    var token_type = '<?php echo $_SESSION['token_type'] ?>';
+                    var agent_id = <?php echo $_SESSION['agent_id'] ?>;
 
                     ajaxRequests.push($.ajax({
-                        url: `http://192.168.137.129:5000/${token_type}chats/${agent_id}`,
+                        url: `http://192.168.43.155:5000/${token_type}chats/${agent_id}`,
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
                             for (let i of data) {
                                 var username = i.user_name;
                                 var token_id = i.token_id;
+                                var user_id = i.user_id;
                                 var imgUrl = "https://mehedihtml.com/chatbox/assets/img/user.png";
 
                                 // Create a new anchor tag with dynamic data
@@ -374,26 +364,60 @@
                                         <!-- <span class="active"></span> -->
                                     </div>
                                     <div class="flex-grow-1 m-1">
-                                        <h3>${username}</h3>
+                                        <h3 class="username">${username}</h3>
                                         <h3 style="font-size:12px" >${token_id}</h3>
                                     </div>
                                 </a>`);
 
                                 // Add the new anchor tag to an existing element on the page
                                 $('#chat_list').append($newAnchorTag);
-
-                                $(document).on('click', '.chat_name', function () {
-                                    var getToken = $(this).find('h3:last').text();
-                                    getUserInfo(1, getToken); //here user id is static
-                                    $('#transfer_ticket_dropdown').removeAttr('disabled');
-                                    localStorage.setItem('CurrentToken', getToken);
-                                });
                             }
+
+                            var appendedScript = null;
+                            $(document).on('click', '.chat_name', function () {
+                                $("#blankWindowMsg").hide();
+                                var getToken = $(this).find('h3:last').text();
+                                var getUsername = $(this).find('h3.username').text();
+                                $('#selectedChat').text(getUsername);
+                                $('#selectedToken').text(getToken);
+                                getUserInfo(user_id, getToken); //here user id is static
+                                $('#transfer_ticket_dropdown').removeAttr('disabled');
+                                $('#status_data').removeAttr('disabled');
+                                // localStorage.setItem('CurrentToken', getToken);
+                                $.ajax({
+                                    url: 'session.php',
+                                    method: 'POST',
+                                    async: false,
+                                    data: { CurrentToken: getToken },
+                                    success: function (response) {
+                                        // console.log(getToken); // handle success
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log(textStatus, errorThrown); // handle error
+                                    }
+                                });
+
+                                $.ajax({
+                                    url: `http://192.168.43.155:5000/chat_history/${getToken}`,
+                                    type: "GET",
+                                    dataType: "json",
+                                    async: false,
+                                    success: function (data) {
+                                        // console.log(data);
+                                        for (let x of data) {
+                                            showChats(x.chat_by, x.message, x.timestamp.slice(11, 16));
+                                        }
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log(textStatus, errorThrown);
+                                    }
+                                });
+                                resetVariables(getToken, agent_id);
+                            });
                             $.ajax({
-                                url: "http://192.168.137.129:5000/chat_transfer/agent_list",
+                                url: "http://192.168.43.155:5000/chat_transfer/agent_list",
                                 type: "GET",
                                 dataType: "json",
-
                                 success: function (data) {
                                     var $select = $('#transfer_ticket_dropdown');
                                     for (let i of data) {
@@ -404,31 +428,42 @@
                                     }
                                     $select.on('change', function () {
                                         var new_agent_id = $(this).val();
-                                        var new_agent_Name = $(this).text();
-                                        var currToken = localStorage.getItem('CurrentToken');
-                                        Swal.fire({
-                                            title: 'Are you sure?',
-                                            text: `would you like to transfer this ticket to ${new_agent_Name} ?`,
-                                            icon: 'question',
-                                            showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            height: "300",
-                                            width: "300",
-                                            cancelButtonText: 'No',
-                                            confirmButtonText: 'Yes, Sure !',
-                                            showClass: {
-                                                popup: 'animate__animated animate__fadeInDown'
-                                            },
-                                            hideClass: {
-                                                popup: 'animate__animated animate__fadeOutUp'
-                                            }
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                transfer_chat(agent_id, new_agent_id, currToken);
+                                        var new_agent_Name = $(this).find(':selected').text();
+                                        // In your JavaScript code
+                                        $.ajax({
+                                            url: 'get_token.php',
+                                            method: 'GET',
+                                            dataType: 'json',
+                                            success: function (response) {
+                                                var currToken = response.CurrentToken;
+                                                Swal.fire({
+                                                    title: 'Are you sure?',
+                                                    text: `would you like to transfer this ticket(${currToken}) to ${new_agent_Name} ?`,
+                                                    icon: 'question',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    height: "300",
+                                                    width: "300",
+                                                    cancelButtonText: 'No',
+                                                    confirmButtonText: 'Yes, Sure !',
+                                                    showClass: {
+                                                        popup: 'animate__animated animate__fadeInDown'
+                                                    },
+                                                    hideClass: {
+                                                        popup: 'animate__animated animate__fadeOutUp'
+                                                    }
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        transfer_chat(agent_id, new_agent_id, currToken);
 
+                                                    }
+                                                })
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                console.log(textStatus, errorThrown); // handle error
                                             }
-                                        })
+                                        });
                                     });
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
@@ -444,9 +479,64 @@
                             ajaxRequests.pop().abort();
                         }
                     }))
+                    var $status_data = $('#status_data');
 
-                } else {
-                    localStorage.removeItem('token_type');
+                    switch (token_type) {
+                        case 'live':
+                            $status_data.empty();
+                            $status_data.append($('<option>', {
+                                text: 'Choose...',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'open',
+                                text: 'Open',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'hold',
+                                text: 'On Hold',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'close',
+                                text: 'Close',
+                            }));
+                            break;
+                        case 'open':
+                            $status_data.empty();
+                            $status_data.append($('<option>', {
+                                text: 'Choose...',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'close',
+                                text: 'Close',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'hold',
+                                text: 'On Hold',
+                            }));
+                            break;
+                        case 'onhold':
+                            $status_data.empty();
+                            $status_data.append($('<option>', {
+                                text: 'Choose...',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'open',
+                                text: 'Open',
+                            }));
+                            $status_data.append($('<option>', {
+                                value: 'close',
+                                text: 'Close',
+                            }));
+                            break;
+                        default:
+                            $status_data.empty();
+                            $status_data.append($('<option>', {
+                                text: 'No options',
+                            }));
+                            break;
+                    }
+
+
                 }
             }
         });
@@ -454,7 +544,7 @@
         function getUserInfo(user_id, tokenId) {
 
             $.ajax({
-                url: `http://192.168.137.129:5000/get_user_info/${user_id}/${tokenId}`,
+                url: `http://192.168.43.155:5000/get_user_info/${user_id}/${tokenId}`,
                 type: "GET",
                 dataType: "json",
                 async: false,
@@ -477,7 +567,7 @@
 
         function transfer_chat(agent_id, new_agent_id, currToken) {
             $.ajax({
-                url: `http://192.168.137.129:5000/transfer_token/${currToken}/${new_agent_id}/${agent_id}`,
+                url: `http://192.168.43.155:5000/transfer_token/${currToken}/${new_agent_id}/${agent_id}`,
                 type: 'GET',
                 async: false,
                 dataType: "JSON",
@@ -485,11 +575,8 @@
                     console.log(data);
                 },
                 complete: function () {
-                    Swal.fire(
-                        'Transfered !',
-                        'ticket transfered successfully !',
-                        'success'
-                    )
+                    showUpdateSuccess('Tikcet', 'Transfered');
+                    removeFromList(currToken);
                 }
             })
         }
@@ -497,51 +584,115 @@
         $('.chat-icon').click(function () {
             $('.chatbox').addClass('d-none')
         })
+
+
+
         //ticket status change functionality
         function changeStatus(ele) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: `would you like to change the status to ${ele.value} ?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                height: "300",
+                width: "300",
+                cancelButtonText: 'No',
+                confirmButtonText: 'Yes, Sure !',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let ticketid = $('#ticketNo').text();
 
-            let ticketid = $('#ticketNo').text();
-            console.log(ele.value);
-            alert(ticketid);
+                    if (ele.value == 'open') {
+                        $.ajax({
+                            url: `http://192.168.43.155:5000/update_open/${ticketid}`,
+                            method: 'GET',
+                            success: function (result) {
+                                showUpdateSuccess('Status', 'Changed');
+                                removeFromList(ticketid);
+                            }
+                        })
+                    } else if (ele.value == 'hold') {
+                        $.ajax({
+                            url: `http://192.168.43.155:5000/update_On_hold/${ticketid}`,
+                            method: 'GET',
+                            success: function (result) {
+                                showUpdateSuccess('Status', 'Changed');
+                                removeFromList(ticketid);
+                            }
+                        })
+                    } else if (ele.value == 'close') {
+                        $.ajax({
+                            url: `http://192.168.43.155:5000/update_close/${ticketid}`,
+                            method: 'GET',
+                            success: function (result) {
+                                showUpdateSuccess('Status', 'Changed');
+                                removeFromList(ticketid);
+                            }
+                        })
+                    }
 
-            // if (xhr) {
-            //     xhr.abort();
-            // }
 
-            if (ele.value == 'open') {
+                }
+            })
+
+
+        }
+
+        function showUpdateSuccess(subMsg, mainMsg) {
+            Swal.fire(
+                mainMsg,
+                `${subMsg} ${mainMsg} Successfully!`,
+                'success'
+            )
+        }
+
+        function removeFromList(ticketToRemove) {
+            $(document).ready(function () {
+                // find all anchor elements within #chat_list
+                $('#chat_list a').each(function () {
+                    var h3Text = $(this).find('h3:last').text(); // get the text of the last h3 element inside the anchor element
+                    if (h3Text === ticketToRemove) { // check if the text is "123"
+                        $(this).remove(); // remove the anchor element if the text is "123"
+                    }
+                });
+            });
+
+        }
+        function showChats(sender, msg, time) {
+            $('#ChatList').empty();
+            if (sender == 'user') {
                 $.ajax({
-                    url: `http://192.168.137.129:5000/update_open/${ticketid}`,
-                    method: 'GET',
-                    success: function (result) {
-                        alert('status Change Successfully')
+                    url: 'sent-msg.html',
+                    success: function (html) {
+                        var modifiedHtml = html.replace('[TypedMessage]', msg).replace('[msgTime]', time);
+                        $('#ChatList').append(modifiedHtml);
+                        var chatBody = document.getElementById('ChatBoxNew');
+                        chatBody.scrollTop = chatBody.scrollHeight;
                     }
                 })
-            } else if (ele.value == 'hold') {
+            }
+            if (sender == 'agent') {
                 $.ajax({
-                    url: `http://192.168.137.129:5000/update_On_hold/${ticketid}`,
-                    method: 'GET',
-                    success: function (result) {
-                        alert('status Change Successfully')
-
-                    }
-                })
-            } else if (ele.value == 'close') {
-                $.ajax({
-                    url: `http://192.168.137.129:5000/update_close/${ticketid}`,
-                    method: 'GET',
-                    success: function (result) {
-                        alert('status Change Successfully')
-
+                    url: 'recieved-msg.html',
+                    success: function (html) {
+                        var modifiedHtml = html.replace('[Received Msg]', msg).replace('[msgTime]', time);
+                        $('#ChatList').append(modifiedHtml);
+                        var chatBody = document.getElementById('ChatBoxNew');
+                        chatBody.scrollTop = chatBody.scrollHeight;
                     }
                 })
             }
         }
 
-
-// Chat .html page script END
-
     </script>
-    <!-- <script src="assets/js/chat_transfer.js"></script> -->
     <script src="main_script.js"></script>
 
 
